@@ -4,7 +4,6 @@
 
 // INCLUDES
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt-nodejs');
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
     // email
@@ -28,6 +27,8 @@ const userSchema = new Schema({
     city: String,
     // state
     state: String,
+    // token
+    token: String,
     // zipcode
     zipCode: { type: Number, required: true, },
     // roles User, Foodtruck, Vendor
