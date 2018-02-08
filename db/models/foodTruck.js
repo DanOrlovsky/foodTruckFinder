@@ -17,7 +17,11 @@ const foodTruckSchema = new Schema({
     locations: [{ 
          type: Schema.Types.ObjectId,
          ref: "Location"
-     }],
+    }],
+     // url
+    url: String,
+    // imageUrl
+    imageUrl: String,
     // isOpen
     isOpen: { 
        type: Boolean,

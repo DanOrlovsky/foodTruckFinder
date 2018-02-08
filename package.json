@@ -13,10 +13,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^3.5.0",
+    "concurrently": "^3.5.1",
     "nodemon": "^1.11.0"
   },
   "dependencies": {
+    "aws-sdk": "^2.190.0",
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",
     "express": "^4.15.4",
@@ -25,6 +26,7 @@
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "uuid": "^3.2.1",
     "react-google-maps": "^9.4.5",
     "react-scripts": "^1.1.0",
     "start": "^5.1.0",

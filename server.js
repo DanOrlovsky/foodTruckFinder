@@ -37,7 +37,4 @@ app.get("*", function(req, res) {
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
-  //const userService = require('./db/service/userService');
-  //userService.findByEmail('milksteak@milksteak.com').then(users => console.log(users));
-
 });
