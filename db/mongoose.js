@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-
+const userInitializer = require('./initializers/userInitializer');
 module.exports = (uri) => {
     mongoose.Promise = global.Promise;
     mongoose.connect(uri);
@@ -8,5 +8,6 @@ module.exports = (uri) => {
     db.on('error', () => console.log("Error"));
     db.once('open', () => {
         console.log("Database connected");
+        userInitializer.getUsers();
     })
 }

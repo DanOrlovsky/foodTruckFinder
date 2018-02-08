@@ -26,4 +26,6 @@ const getUsers = () => {
     })
 }
 
-module.exports = getUsers;
+module.exports = { 
+    getUsers: getUsers
+}

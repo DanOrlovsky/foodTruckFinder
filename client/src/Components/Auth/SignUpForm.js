@@ -41,10 +41,10 @@ const SignUpForm = ({ onSubmit, onChange, errors, user }) => (
                     value={user.password} />
             </div>
             <div className="field-line">
-                <Checkbox 
+                {/*<Checkbox 
                     label="Are you a foodtruck?" 
                     checked={this.state.isFoodTruck} 
-                    onCheck= { updateCheck.bind(this) }/>
+                onCheck= { updateCheck.bind(this) }/>*/}
             </div>
 
             <div className="button-line">
