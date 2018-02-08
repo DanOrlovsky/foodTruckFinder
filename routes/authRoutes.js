@@ -3,7 +3,10 @@
 const express = require('express');
 const validator = require('validator');
 const router = new express.Router();
+const AWS = require('aws-sdk');
+let myBucket = "food-truck-avatars";
 
+let s3 = new AWS.S3({ params: { Bucket: myBucket }});
 
 const validateSignupForm = payload => {
     const errors = {};

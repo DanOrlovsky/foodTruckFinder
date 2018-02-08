@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, CardText } from 'material-ui/Card';
+import { Checkbox } from 'material-ui/Checkbox';
+import ActionFavorite from 'material-ui/svg-icons/action/favorite';
+import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
@@ -38,7 +41,10 @@ const SignUpForm = ({ onSubmit, onChange, errors, user }) => (
                     value={user.password} />
             </div>
             <div className="field-line">
-                
+                <Checkbox 
+                    label="Are you a foodtruck?" 
+                    checked={this.state.isFoodTruck} 
+                    onCheck= { updateCheck.bind(this) }/>
             </div>
 
             <div className="button-line">

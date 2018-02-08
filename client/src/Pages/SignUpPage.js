@@ -12,6 +12,7 @@ class SignUpPage extends Component
             email: '',
             zipCode: '',
             password: '',
+            isFoodTruck: '',
         }
     }
     constructor(props) {
@@ -21,6 +22,7 @@ class SignUpPage extends Component
     }
 
     onChange = event => {
+        console.log(event);
         const field = event.target.name;
         const user = this.state.user;
         user[field] = event.target.value;
@@ -28,7 +30,9 @@ class SignUpPage extends Component
             user,
         });
     }
-
+    updateCheck = event => {
+        console.log(event);
+    }
     processForm = event => {
         event.preventDefault();
         
@@ -54,6 +58,7 @@ class SignUpPage extends Component
                 onSubmit={ this.processForm }
                 onChange={ this.onChange }
                 errors={this.state.errors}
+                updateCheck={this.updateCheck }
                 user={this.state.user}
             />
         )
