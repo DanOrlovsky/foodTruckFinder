@@ -49,9 +49,9 @@ const objStore = [
         email: "email@email.com",
         firstName: "Donny",
         lastName: "Darko",
-        password: "Doesn't Matter",
+        password: "pa$$word",
         zipCode: 28206,
-        role: ['Foodtruck'],
+        role: 'Foodtruck',
         foodTrucks: [
             {
                 name: "Hifalutin Foods!",
