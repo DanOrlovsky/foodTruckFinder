@@ -77,9 +77,10 @@ userSchema.pre('save', function(next) {
 });
 
 // Compares a candidate for password to a hashed password.
-userSchema.methods.comparePassword = (candidate) => {
+userSchema.methods.comparePassword = function(candidate) {
     return new Promise((resolve, reject) => {
         bcrypt.compare(candidate, this.password, (err, isMatch) => {
+            console.log(err);
             if(err) return reject(err);
             resolve(isMatch);
         })
