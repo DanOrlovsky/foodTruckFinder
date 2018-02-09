@@ -1,49 +1,11 @@
+'use strict';
+// ----------------------------------------------------
+// --- U S E R D A T A . J S --------------------------
+// ----------------------------------------------------
+
+
 const uuidv1 = require('uuid/v1');
 
-/*
-const userSchema = new Schema({
-    email: {
-        type: String,
-        lowercase: true,
-        unique: true,
-        required: true
-    },
-    firstName: String,
-    lastName: String,
-    password: { type: String, required: true, },
-    addressLine1: String,
-    addressLine2: String,
-    city: String,
-    state: String,
-    zipCode: { type: Number, required: true, },
-    role: {
-        type: String,
-        enum: ['User', 'Foodtruck', 'Vendor'],
-        default: ['User']
-    },
-    // If Foodtruck role, foodtrucks go here.
-    foodTrucks: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'foodTruck'
-        }
-    ],
-    name: { type:String, required: true },
-    currentLocation: {
-        type: Schema.Types.ObjectId,
-        ref: "Location",
-    },
-    locations: [{ 
-         type: Schema.Types.ObjectId,
-         ref: "Location"
-    }],
-    url: String,
-    isOpen: { 
-       type: Boolean,
-       required: true,
-       default: false,
-    },
-});*/
 const objStore = [
     {
         email: "email@email.com",
@@ -63,6 +25,43 @@ const objStore = [
             }
         ],
     },
+    {
+        email: "rogers@email.com",
+        firstName: "Milkshake",
+        lastName: "McGoo",
+        password: "pa$$word",
+        zipCode: 28206,
+        role: 'Foodtruck',
+        foodTrucks: [
+            {
+                name: "Pork Tacos!",
+                currentLocation: {
+                    latitude: "35.2238751",
+                    longitude: "-80.8377787",
+                },
+                url: "https://porktacos.com",
+            }
+        ],
+    },
+    {
+        email: "nickycakes@email.com",
+        firstName: "Nicky",
+        lastName: "Cakes",
+        password: "pa$$word",
+        zipCode: 28206,
+        role: 'Foodtruck',
+        foodTrucks: [
+            {
+                name: "Crepes!",
+                currentLocation: {
+                    latitude: "35.2149205",
+                    longitude: "-80.8565597",
+                },
+                url: "https://crepes.com",
+            }
+        ],
+    },
+
 ];
 
 module.exports = objStore;
