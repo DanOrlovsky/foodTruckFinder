@@ -1,11 +1,14 @@
-
+// ----------------------------------------------------
+// --- A U T H R O U T E S . J S ----------------------
+// ----------------------------------------------------
 
 const express = require('express');
 const validator = require('validator');
 const router = new express.Router();
 const AWS = require('aws-sdk');
-let myBucket = "food-truck-avatars";
+const passport = require('passport');
 
+let myBucket = "food-truck-avatars";
 let s3 = new AWS.S3({ params: { Bucket: myBucket }});
 
 const validateSignupForm = payload => {
@@ -40,6 +43,7 @@ const validateSignupForm = payload => {
 
 const validateLoginForm = payload => {
     const { email, password } = payload;
+    let isFormValid = true;
     errors = {};
     message = "";
     if(!email || typeof email !== 'string' || !validator.isEmail(email)) {
@@ -73,16 +77,39 @@ router.post('/signup', (req, res) => {
     return res.status(200);
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', (req, res, next) => {
+
     const validationResult = validateLoginForm(req.body);
-    if(!validation.success) {
+    if(!validationResult.success) {
         return res.json({
             success: false,
             message: validationResult.message,
             errors: validationResult.errors,
         }); 
     }
-    return res.status(200);
-})
+
+    passport.authenticate("local-login", (err, token, userData) => {
+        if(err) {
+            if(err.name === 'IncorrectCredentialsError') {
+                return res.json({
+                    success: false,
+                    message: err.message,
+                })
+            }
+
+            return res.json({
+                success: false,
+                message: "We could not log you in.",
+            });
+        }
+        console.log("WE'RE HERE!!!");
+        return res.json({
+            success: true,
+            message: "You have successfully logged in!",
+            token,
+            user: userData
+        });
+    })(req, res, next);
+});
 
 module.exports = router;
