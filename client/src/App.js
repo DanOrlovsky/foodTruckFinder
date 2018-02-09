@@ -8,6 +8,7 @@ import Base from './Components/Base';
 import HomePage from './Pages/HomePage';
 import LoginPage from './Pages/LoginPage';
 import SignUpPage from './Pages/SignUpPage';
+import { Button } from 'reactstrap';
 
 injectTapEventPlugin();
 
