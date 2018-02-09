@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("path");
+const morgan = require('morgan');
 const bodyParser = require('body-parser');
-
+const setup = require('./config').init();
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -14,8 +15,17 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
+app.use(morgan('dev'));
+
+
+// DB Setup
+const db = process.env.MONGO_DB || setup.db.uri;
+require('./db/mongoose')(db);
+
+
 const authRoutes = require('./routes/authRoutes');
 app.use('/auth', authRoutes);
+
 
 // Send every request to the React app
 // Define any API routes before this runs
