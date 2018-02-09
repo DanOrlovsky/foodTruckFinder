@@ -1,11 +1,14 @@
+'use strict';
 // ----------------------------------------------------
 // --- U S E R . J S ----------------------------------
 // ----------------------------------------------------
 
 // INCLUDES
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt-nodejs');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
+const foodTruck = require('./foodTruck');
+
 const userSchema = new Schema({
     // email
     email: {
@@ -28,6 +31,8 @@ const userSchema = new Schema({
     city: String,
     // state
     state: String,
+    // token
+    token: String,
     // zipcode
     zipCode: { type: Number, required: true, },
     // roles User, Foodtruck, Vendor
@@ -38,10 +43,7 @@ const userSchema = new Schema({
     },
     // If Foodtruck role, foodtrucks go here.
     foodTrucks: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'foodTruck'
-        }
+        foodTruck.foodTruckSchema,
     ],
     resetPasswordToken: String,
     resetPasswordExpires: Date,
@@ -55,7 +57,7 @@ const userSchema = new Schema({
 userSchema.pre('save', function(next) {
     const user = this;
     const saltFactor = 5;
-    console.log(this);
+    
     // Checks whether there's a reason to hash the password in the first place.
     
     if(!user.isModified('password')) return next();
@@ -63,8 +65,11 @@ userSchema.pre('save', function(next) {
     bcrypt.genSalt(saltFactor, (err, salt) => {
         if(err) return next(err);
         console.log("Salting password")
-        bcrypt.hash(user.password, salt, null, (err, hash) => {
-            if(err) return next(err);
+        bcrypt.hash(user.password, salt, (err, hash) => {
+            if(err) {
+                console.log(err);
+                return next(err);
+            }
             user.password = hash;
             next();
         });

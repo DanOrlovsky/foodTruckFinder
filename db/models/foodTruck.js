@@ -5,19 +5,19 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+const location = require('./location');
 const foodTruckSchema = new Schema({
     // name
     name: { type:String, required: true },
-    currentLocation: {
-        type: Schema.Types.ObjectId,
-        ref: "Location",
-    },
+    currentLocation: [
+        location.locationSchema,
+    ],
     // locations
-    locations: [{ 
-         type: Schema.Types.ObjectId,
-         ref: "Location"
-     }],
+    locations: [ location.locationSchema ],
+     // url
+    url: String,
+    // imageUrl
+    imageUrl: String,
     // isOpen
     isOpen: { 
        type: Boolean,
@@ -29,4 +29,7 @@ const foodTruckSchema = new Schema({
 
 const FoodTruck = mongoose.model("FoodTruck", foodTruckSchema);
 
-module.exports = FoodTruck;
+module.exports = { 
+    FoodTruck: FoodTruck,
+    foodTruckSchema: foodTruckSchema,
+};
