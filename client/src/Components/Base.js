@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Base.css';
 
 const Base = ({children}) => (
-    <div>
+    <div className='body-base'>
         <div className='top-bar'>
             <div className="top-bar-left">
                 <Link to="/">Food Truck Finder</Link>

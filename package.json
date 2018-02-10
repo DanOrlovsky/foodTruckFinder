@@ -32,5 +32,13 @@
     "react-dom": "^16.2.0",
     "reactstrap": "^5.0.0-beta",
     "validator": "^9.3.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanOrlovsky/foodTruckFinder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DanOrlovsky/foodTruckFinder/issues"
+  },
+  "homepage": "https://github.com/DanOrlovsky/foodTruckFinder#readme"
 }

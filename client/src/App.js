@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import {Card, CardTitle} from 'material-ui/Card';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Base from './Components/Base';
 import HomePage from './Pages/HomePage';
@@ -15,7 +12,7 @@ injectTapEventPlugin();
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme() }>
+      
         <Router>
           <Switch>
             <Base>
@@ -25,7 +22,7 @@ class App extends Component {
             </Base>
           </Switch>
         </Router>
-      </MuiThemeProvider>
+      
     );
   }
 }
