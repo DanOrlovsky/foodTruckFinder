@@ -1,17 +1,26 @@
+* {
+  
+}
+
 body {
     margin: 0;
     font-size: 16px;
   }
+
+  .body-base {
+    background-color: red;
+    height: 100%;
+  }
   
-  a {
-    color: #00bcd4;
+  .top-bar a {
+    color: #741012;
     font-weight: bold;
     text-decoration: none;
     transition: color 0.4s;
   }
   
-  a:hover {
-    color: #1976d2;
+  .top-bar a:hover {
+    color: #741012;
   }
   
   .text-center {
@@ -21,6 +30,7 @@ body {
   .top-bar {
     padding: 10px 15px;
     margin-bottom: 50px;
+    background-color: #F4BC19;
   }
   .top-bar::after {
     content: '';
