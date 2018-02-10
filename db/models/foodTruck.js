@@ -2,18 +2,14 @@
 // --- F O O D T R U C K . J S ------------------------
 // ----------------------------------------------------
 
-
+const GeoJSON = require('mongoose-geojson-schema');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const location = require('./location');
 const foodTruckSchema = new Schema({
     // name
     name: { type:String, required: true },
-    currentLocation: 
-        { 
-            type: Array,
-            ref: "Location",
-        },
+    loc: {type: [Number], index: '2dsphere' },
     
     // locations
     locations: [ location.locationSchema ],
