@@ -17,10 +17,7 @@ const objStore = [
         foodTrucks: [
             {
                 name: "Hifalutin Foods!",
-                currentLocation: [
-                    "-80.8185115",
-                    "35.2387048",
-                ],
+                loc: ["-80.8185115", "35.2387048"],
                 url: "https://hifalutinfoods.com",
             }
         ],
@@ -35,10 +32,7 @@ const objStore = [
         foodTrucks: [
             {
                 name: "Pork Tacos!",
-                currentLocation: [
-                    "-80.8377787",
-                    "35.2238751",
-                ],
+                loc:  ["-80.8377787", "35.2238751"],
                 url: "https://porktacos.com",
             }
         ],
@@ -53,10 +47,7 @@ const objStore = [
         foodTrucks: [
             {
                 name: "Crepes!",
-                currentLocation: [
-                    "-80.8565597",
-                    "35.2149205",
-                ],
+                loc: ["-80.8565597", "35.2149205"],
                 url: "https://crepes.com",
             }
         ],
@@ -71,11 +62,38 @@ const objStore = [
         foodTrucks: [
             {
                 name: "Crepes!",
-                currentLocation: [
-                    "-122.4836139",
-                    "37.7461481",
-                ],
+                loc: ["-122.4836139", "37.7461481"],
                 url: "https://crepes.com",
+            }
+        ],
+    },
+    {
+        email: "milwaukee@email.com",
+        firstName: "Milwaukee",
+        lastName: "WI",
+        password: "pa$$word",
+        zipCode: 53205,
+        role: 'Foodtruck',
+        foodTrucks: [
+            {
+                name: "Stupid stuff!",
+                loc: ["-88.1075137", "43.057806"],
+                url: "https://milkhouse.com",
+            }
+        ],
+    },
+    {
+        email: "hickory@email.com",
+        firstName: "Hickory",
+        lastName: "NC",
+        password: "pa$$word",
+        zipCode: 28601,
+        role: 'Foodtruck',
+        foodTrucks: [
+            {
+                name: "Stupid stuff!",
+                loc: ["-81.3890396", "35.7312647"],
+                url: "https://hickory.com",
             }
         ],
     },

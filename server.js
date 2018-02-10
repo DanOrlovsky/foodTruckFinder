@@ -35,7 +35,9 @@ require('./db/mongoose')(db);
 
 
 const authRoutes = require('./routes/authRoutes');
+const apiRoutes = require('./routes/apiRoutes');
 app.use('/auth', authRoutes);
+app.use('/v1/api', apiRoutes);
 
 
 // Send every request to the React app
