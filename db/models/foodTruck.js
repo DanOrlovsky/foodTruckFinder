@@ -9,9 +9,12 @@ const location = require('./location');
 const foodTruckSchema = new Schema({
     // name
     name: { type:String, required: true },
-    currentLocation: [
-        location.locationSchema,
-    ],
+    currentLocation: 
+        { 
+            type: Array,
+            ref: "Location",
+        },
+    
     // locations
     locations: [ location.locationSchema ],
      // url
