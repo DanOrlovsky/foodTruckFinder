@@ -17,10 +17,10 @@ const objStore = [
         foodTrucks: [
             {
                 name: "Hifalutin Foods!",
-                currentLocation: {
-                    latitude: "35.2387048",
-                    longitude: "-80.8185115",
-                },
+                currentLocation: [
+                    "-80.8185115",
+                    "35.2387048",
+                ],
                 url: "https://hifalutinfoods.com",
             }
         ],
@@ -35,10 +35,10 @@ const objStore = [
         foodTrucks: [
             {
                 name: "Pork Tacos!",
-                currentLocation: {
-                    latitude: "35.2238751",
-                    longitude: "-80.8377787",
-                },
+                currentLocation: [
+                    "-80.8377787",
+                    "35.2238751",
+                ],
                 url: "https://porktacos.com",
             }
         ],
@@ -53,10 +53,28 @@ const objStore = [
         foodTrucks: [
             {
                 name: "Crepes!",
-                currentLocation: {
-                    latitude: "35.2149205",
-                    longitude: "-80.8565597",
-                },
+                currentLocation: [
+                    "-80.8565597",
+                    "35.2149205",
+                ],
+                url: "https://crepes.com",
+            }
+        ],
+    },
+    {
+        email: "cali@email.com",
+        firstName: "California",
+        lastName: "Citchen",
+        password: "pa$$word",
+        zipCode: 94129,
+        role: 'Foodtruck',
+        foodTrucks: [
+            {
+                name: "Crepes!",
+                currentLocation: [
+                    "-122.4836139",
+                    "37.7461481",
+                ],
                 url: "https://crepes.com",
             }
         ],
