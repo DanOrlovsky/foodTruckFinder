@@ -7,7 +7,7 @@ const validator = require('validator');
 const router = new express.Router();
 const AWS = require('aws-sdk');
 const passport = require('passport');
-
+const User = require('../db/models/user');
 let myBucket = "food-truck-avatars";
 let s3 = new AWS.S3({ params: { Bucket: myBucket }});
 
@@ -78,7 +78,6 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/login', (req, res, next) => {
-
     const validationResult = validateLoginForm(req.body);
     if(!validationResult.success) {
         return res.json({
@@ -87,7 +86,6 @@ router.post('/login', (req, res, next) => {
             errors: validationResult.errors,
         }); 
     }
-
     passport.authenticate("local-login", (err, token, userData) => {
         if(err) {
             if(err.name === 'IncorrectCredentialsError') {
@@ -102,7 +100,6 @@ router.post('/login', (req, res, next) => {
                 message: "We could not log you in.",
             });
         }
-        console.log("WE'RE HERE!!!");
         return res.json({
             success: true,
             message: "You have successfully logged in!",
@@ -111,5 +108,11 @@ router.post('/login', (req, res, next) => {
         });
     })(req, res, next);
 });
+
+router.get("/dataFromToken", (req, res, next) => {
+    User.findOne({ where: { token: req.token}}).then((user) => {
+        return res.json(user);
+    }).catch(err => res.json({ error: "You must be lost."}));
+})
 
 module.exports = router;

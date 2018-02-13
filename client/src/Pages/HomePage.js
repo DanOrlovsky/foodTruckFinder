@@ -1,12 +1,16 @@
-import React from 'react';
-import Map from '../Components/Map/Map'
+import React, {Component} from 'react';
+import FoodTruckMapComponent from '../Components/Map/Map'
 
-const HomePage = () => (
-    <div className="container">
-        <h2>Food truck finder</h2>
-        <Map></Map>
-    </div>
+class HomePage extends  Component {
+    render() {
+        return(
+            <div className="container">
+                <h2>Food truck finder</h2>
+                <FoodTruckMapComponent />
+            </div>
+        );
+    }
 
-);
+};
 
 export default HomePage;

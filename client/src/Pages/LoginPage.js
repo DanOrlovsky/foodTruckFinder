@@ -1,45 +1,45 @@
 import React, {Component} from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LoginForm from '../Components/Auth/LoginForm';
+import API from '../utils/API';
+import Auth from '../Modules/Auth';
+
 
 class LoginPage extends Component {
     state = {
         errors: {},
-        user: {
-            email: "",
-            password: "",
-        }
-    }
-
-    constructor(props) {
-        super(props);
-        this.processForm = this.processForm.bind(this);
-        this.onChange = this.onChange.bind(this);
+        email: "",
+        password: "",
+        isLoggedIn: false,
     }
 
     processForm = event => {
         event.preventDefault();
-        console.log("Email", this.state.user.email);
-        console.log("Password", this.state.user.password);
+        API.loginUser({ email: this.state.email, password: this.state.password}).then(resp => {
+            Auth.authenticateUser(resp.data.token);
+            this.setState({ isLoggedIn: true });
+        }).catch(err => console.log(err));
     }
 
     onChange = event => {
-        const field = event.target.name;
-        const user = this.state.user;
-        user[field] = event.target.value;
+        const { name, value } = event.target;
+        console.log(name, value);
         this.setState({
-            user,
-        });
+            [name]: value,
+        })
     }
 
     render() {
         return(
-            <LoginForm
-                onSubmit={ this.processForm }
-                onChange={ this.onChange}
-                errors={this.state.errors }
-                user={this.state.user }
-            />
+             this.state.isLoggedIn ? ( <Redirect to="/" /> ) : (
+                <LoginForm
+                    onSubmit={ this.processForm }
+                    onChange={ this.onChange}
+                    errors={this.state.errors }
+                    user={this.state.user }
+                />
+            )
         )
     }
 }

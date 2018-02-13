@@ -7,7 +7,6 @@ const User = require('../db/models/user');
 
 module.exports = (req, res, next) => {
     if(!req.headers.authorization) return res.status(401).end();
-
     const token = req.headers.authorization.split(' ')[1];
     return jwt.verify(token, config.jwtSecret, (err, decoded) => {
         if(err) return res.status(401).end();
@@ -17,7 +16,7 @@ module.exports = (req, res, next) => {
                 return res.status(401).end();
             }
 
-            next();
+            return next();
         })
     });
 }
