@@ -9,7 +9,7 @@ const convertToMiles = (miles) => {
 }
 
 router.get('/getLocalTrucks/:lat/:lng/:miles?', (req, res, next) => {   
-    let milesSearch = req.params.miles ? convertToMiles(req.headers.miles) :  convertToMiles(15); 
+    let milesSearch = req.params.miles ? convertToMiles(req.headers.miles) :  convertToMiles(10); 
     let coordinates = [ parseFloat(req.params.lng), parseFloat(req.params.lat) ];
     
     Users.find({ 
