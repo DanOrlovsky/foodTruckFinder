@@ -9,7 +9,7 @@ const convertToMiles = (miles) => {
 }
 
 router.get('/getLocalTrucks/:lat/:lng/:miles?', (req, res, next) => {   
-    let milesSearch = req.params.miles ? convertToMiles(req.headers.miles) :  convertToMiles(10); 
+    let milesSearch = req.params.miles ? convertToMiles(req.params.miles) :  convertToMiles(10); 
     let coordinates = [ parseFloat(req.params.lng), parseFloat(req.params.lat) ];
     
     Users.find({ 
@@ -28,7 +28,6 @@ router.get('/getLocalTrucks/:lat/:lng/:miles?', (req, res, next) => {
                 }
             })
         }
-        console.log("Open Users: " + openFoodTrucks);
         return res.json(openFoodTrucks);
     })
     .catch(err => res.send(err));
