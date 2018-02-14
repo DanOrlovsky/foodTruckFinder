@@ -34,6 +34,27 @@ class DashboardPage extends Component {
                             <Input value={ this.state.user.lastname } name="lastname" id="lastname"onChange={ this.onChange } type="text" />
                        </Col>
                    </FormGroup>
+                   <FormGroup row>
+                       <Label for="address">address</Label>
+                       <Col sm={10}>
+                            <Input value={ this.state.user.address } name="address" id="address"onChange={ this.onChange } type="text" />
+                       </Col>
+                   </FormGroup>
+                   <FormGroup row>
+                       <Label for="city">city</Label>
+                       <Col sm={10}>
+                            <Input value={ this.state.user.city } name="city" id="city"onChange={ this.onChange } type="text" />
+                       </Col>
+                   </FormGroup>
+                   <FormGroup row>
+                       <Label for="zipcode">zipcode</Label>
+                       <Col sm={10}>
+                            <Input value={ this.state.user.zipcode } name="zipcode" id="zipcode"onChange={ this.onChange } type="text" />
+                       </Col>
+                   </FormGroup>
+
+
+
             
 
                                    
