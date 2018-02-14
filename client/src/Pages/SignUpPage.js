@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import SignUpForm from '../Components/Auth/SignUpForm';
 import API from '../utils/API';
 

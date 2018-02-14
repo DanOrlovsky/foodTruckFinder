@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Form, FormGroup, Label, Input } from 'reactstrap';
 import '../Base.css';
 
 
@@ -16,11 +16,12 @@ const LoginForm = ({onSubmit, onChange, errors, user}) => (
             <Label for="userPassword">Password</Label>
             <Input type="password" name="password" onChange={ onChange } id="userPassword" placeholder="Shhhh! Don't Tell Anyone!" />
           </FormGroup>
-          <div class="loginButton">
-            <input id="login" type="button" value="Login"></input>
+          <div className="loginButton">
+            <input id="login" type="submit" value="Login"></input>
           </div>
         </Form>
-        </div>
+        <h4>Need an account?  <Link to="/signup">Create One</Link></h4>
+      </div>
   );
 
     

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import LoginForm from '../Components/Auth/LoginForm';
 import API from '../utils/API';
 import Auth from '../Modules/Auth';
@@ -26,6 +25,7 @@ class LoginPage extends Component {
             } else {
                 Auth.authenticateUser(resp.data.token);
                 this.setState({ isLoggedIn: true });
+                this.props.userAuthChanged();
             }
         }).catch(err => console.log(err));
     }

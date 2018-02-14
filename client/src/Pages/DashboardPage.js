@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from '../utils/API';
-import { Col,Container, Label, Form, FormGroup, Button, Input } from 'reactstrap';
+import { Col,Container, Label, Form, FormGroup,  Input } from 'reactstrap';
 
 class DashboardPage extends Component {
     state = {

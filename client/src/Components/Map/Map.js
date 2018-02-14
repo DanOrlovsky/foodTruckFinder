@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import { compose, withProps } from "recompose";
 import { geolocated } from 'react-geolocated';
 import { Label, Form, FormGroup, Button, Input } from 'reactstrap';
 import API from '../../utils/API';
 import {
-  withScriptjs,
   withGoogleMap,
   GoogleMap,
   Marker,
@@ -21,7 +18,7 @@ const FoodTruckMap = withGoogleMap((props) =>
 class FoodTruckMapComponent extends Component {
   state = {
     distance: 10,
-    zoom: 15,
+    zoom: 13,
     foodTrucks: [],
   }
 
@@ -42,7 +39,7 @@ class FoodTruckMapComponent extends Component {
   
   componentWillReceiveProps(nextProps) {
     if(nextProps.coords !== this.props.coords) {
-      let coords = {
+      const coords = {
         lat: nextProps.coords.latitude,
         lng: nextProps.coords.longitude,
       }
@@ -74,16 +71,17 @@ class FoodTruckMapComponent extends Component {
               containerElement= { <div style={{ height: `800px` }} /> }
               zoom= {this.state.zoom }
               mapElement= { <div style={{ height: `100%` }} /> }>
-              { 
-                this.state.foodTrucks.length > 0 ? 
-                this.state.foodTrucks.map((current, index) => 
-                  <Marker position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } options={{icon: 'images/marker.png'}}>
-                    <InfoWindow>
-                      <div>{ current.name }</div>
-                    </InfoWindow>   
-                  </Marker>
-                ) : ""
-              }
+                <Marker position={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }} />
+                { 
+                  this.state.foodTrucks.length > 0 ? 
+                  this.state.foodTrucks.map((current, index) => 
+                    <Marker position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } options={{icon: 'images/marker.png'}}>
+                      <InfoWindow>
+                        <div>{ current.name }</div>
+                      </InfoWindow>   
+                    </Marker>
+                  ) : ""
+                }
             </FoodTruckMap>
           </div>
         : <h2>Getting your coordinates.</h2>  
