@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
 import FoodTruckMapComponent from '../Components/Map/Map'
+import { Row, Card, CardTitle, Container, Col } from 'reactstrap';
 
 class HomePage extends  Component {
     render() {
         return(
-            <div className="container">
-                <h2>Food truck finder</h2>
-                <FoodTruckMapComponent />
-            </div>
+            <Row>
+                <Col md={{ size: 6, offset: 3 }} sm="12">
+                    <h2>Local Food Trucks</h2>
+                    <FoodTruckMapComponent />
+                </Col>
+            </Row>
         );
     }
 
