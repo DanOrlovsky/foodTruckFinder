@@ -17,6 +17,7 @@ const objStore = [
         foodTrucks: [
             {
                 name: "Hifalutin Foods!",
+                isOpen: true,
                 loc: ["-80.8185115", "35.2387048"],
                 url: "https://hifalutinfoods.com",
             }
@@ -32,6 +33,7 @@ const objStore = [
         foodTrucks: [
             {
                 name: "Pork Tacos!",
+                isOpen: true,
                 loc:  ["-80.8377787", "35.2238751"],
                 url: "https://porktacos.com",
             }
