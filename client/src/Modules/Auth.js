@@ -15,7 +15,7 @@ class Auth {
     // isUserAuthenticated
     // Checks if the token exists
     static isUserAuthenticated() {
-        return localStorage.getItem('token') !== null;
+        return localStorage.getItem('token') !== null && localStorage.getItem('token') !== "undefined";
     }
 
     // deauthenticateUser
