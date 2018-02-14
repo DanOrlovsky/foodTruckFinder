@@ -1,33 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Button, Form, FormGroup, Label, Input, FormText, Container, Col } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import '../Base.css';
 
 
 const LoginForm = ({onSubmit, onChange, errors, user}) => (
-        <Container>
-          { errors ? <h2>{ errors.message }</h2> : "" }
-          <Form action='/' onSubmit={ onSubmit } >
-            <FormGroup row>
-              <Label for="userEmail" sm={2}>Email</Label>
-              <Col sm={10}>
-                <Input type="email" name="email" onChange={ onChange } id="email" placeholder="foodtruckfinder@gmail.com" />
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="userPassword" sm={2}>Password</Label>
-              <Col sm={10}>
-                <Input type="password" name="password" onChange={ onChange } id="password" placeholder="Shhhh! Don't Tell Anyone!" />
-              </Col>
-            </FormGroup>
-            <FormGroup check row>
-              <Col sm={{size: 10, offset: 2 }}>
-                <Button>Submit</Button>
-              </Col>
-            </FormGroup>
-          </Form>
-        </Container>
-      );
+      <div id="loginForm">
+        <Form action='/' onSubmit={ onSubmit } >
+          <FormGroup>
+            <Label for="userEmail">Email</Label>
+            <Input type="email" name="email" onChange={ onChange } id="userEmail" placeholder="foodtruckfinder@gmail.com" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="userPassword">Password</Label>
+            <Input type="password" name="password" onChange={ onChange } id="userPassword" placeholder="Shhhh! Don't Tell Anyone!" />
+          </FormGroup>
+          <div class="loginButton">
+            <input id="login" type="button" value="Login"></input>
+          </div>
+        </Form>
+        </div>
+  );
+
     
     
 LoginForm.propTypes = {

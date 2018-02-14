@@ -1,10 +1,11 @@
 * {
-  
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
     margin: 0;
     font-size: 16px;
+    text-decoration: none;
   }
 
   .body-base {
@@ -13,13 +14,14 @@ body {
   }
   
   .top-bar a {
+    text-decoration: none;
     color: #741012;
     font-weight: bold;
-    text-decoration: none;
     transition: color 0.4s;
   }
   
   .top-bar a:hover {
+    text-decoration: none;
     color: #741012;
   }
   
@@ -49,8 +51,9 @@ body {
   
   .top-bar a,
   .nav a {
+    text-decoration: none;
     margin: 0 8px;
-  }
+    }
   
   .container {
     margin: 0 auto;
@@ -74,4 +77,28 @@ body {
   .success-message {
     padding: 0 16px;
     color: green;
+  }
+
+  #button {
+    color: red;
+    margin: 0 auto;
+  }
+
+  #signUpForm {
+    margin: 0 auto;
+    width: 25%;
+  }
+
+  #loginForm {
+    margin: 0 auto;
+    width: 25%;
+  }
+
+  .loginButton input {
+    margin: 0 auto;
+    color: red;
+    border-radius: 3px;
+    border-color: solid 1px #F4BC19;
+    padding: 10px;
+    
   }
