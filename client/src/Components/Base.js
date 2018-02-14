@@ -29,17 +29,7 @@ class Base extends Component {
                         <Link to="/">Food Truck Finder</Link>
                     </div>
                     <div className="top-bar-right">
-                        { this.state.isAuthenticated ? (
-                            <div>
-                                <Link to="/api/dashboard">User</Link>
-                                <Link to="/logout" onClick={ this.logOut }>Logout</Link>
-                            </div>
-                        ) : (
-                            <div>
-                                <Link to="/login">Log in</Link>
-                                <Link to="/signup">Sign up</Link>
-                            </div>
-                        ) }
+                        <NavBar />
                     </div>
                 </div>
                 { this.props.children }
@@ -53,3 +43,36 @@ class Base extends Component {
 
 
 export default Base;
+
+
+
+// <div className="top-bar-right">
+// { this.state.isAuthenticated ? (
+//     <div>
+//         <NavBar />
+//         <Link to="/api/dashboard">User</Link>
+//         <Link to="/logout" onClick={ this.logOut }>Logout</Link>
+//     </div>
+// ) : (
+//     <div>
+//         <Link to="/login">Log in</Link>
+//         <Link to="/signup">Sign up</Link>
+//     </div>
+// ) }
+// </div>
+
+
+//============================================
+
+// { this.state.isAuthenticated ? (
+//     <div>
+//         <NavBar />
+//         <Link to="/api/dashboard">User</Link>
+//         <Link to="/logout" onClick={ this.logOut }>Logout</Link>
+//     </div>
+// ) : (
+//     <div>
+//         <Link to="/login">Log in</Link>
+//         <Link to="/signup">Sign up</Link>
+//     </div>
+// ) }
