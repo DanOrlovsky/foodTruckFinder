@@ -1,10 +1,7 @@
-* {
-  
-}
-
 body {
     margin: 0;
     font-size: 16px;
+    text-decoration: none;
   }
 
   .body-base {
@@ -13,13 +10,14 @@ body {
   }
   
   .top-bar a {
+    text-decoration: none;
     color: #741012;
     font-weight: bold;
-    text-decoration: none;
     transition: color 0.4s;
   }
   
   .top-bar a:hover {
+    text-decoration: none;
     color: #741012;
   }
   
@@ -49,8 +47,9 @@ body {
   
   .top-bar a,
   .nav a {
+    text-decoration: none;
     margin: 0 8px;
-  }
+    }
   
   .container {
     margin: 0 auto;
@@ -74,4 +73,9 @@ body {
   .success-message {
     padding: 0 16px;
     color: green;
+  }
+
+  #button {
+    margin: 5px;
+    color: red;
   }
