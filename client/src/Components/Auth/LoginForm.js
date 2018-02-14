@@ -6,7 +6,7 @@ import '../Base.css';
 
 
 const LoginForm = ({onSubmit, onChange, errors, user}) => (
-
+      <div id="loginForm">
         <Form action='/' onSubmit={ onSubmit } >
           <FormGroup>
             <Label for="userEmail">Email</Label>
@@ -20,6 +20,7 @@ const LoginForm = ({onSubmit, onChange, errors, user}) => (
             <input id="login" type="button" value="Login"></input>
           </div>
         </Form>
+        </div>
   );
 
     

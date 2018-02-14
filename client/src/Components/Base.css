@@ -1,3 +1,7 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
     margin: 0;
     font-size: 16px;
@@ -76,6 +80,25 @@ body {
   }
 
   #button {
-    margin: 5px;
     color: red;
+    margin: 0 auto;
+  }
+
+  #signUpForm {
+    margin: 0 auto;
+    width: 25%;
+  }
+
+  #loginForm {
+    margin: 0 auto;
+    width: 25%;
+  }
+
+  .loginButton input {
+    margin: 0 auto;
+    color: red;
+    border-radius: 3px;
+    border-color: solid 1px #F4BC19;
+    padding: 10px;
+    
   }

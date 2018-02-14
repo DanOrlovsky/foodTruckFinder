@@ -6,7 +6,7 @@ import '../Base.css';
 
 
 const SignUpForm = ({ onSubmit, onChange, errors, user }) => (
-   
+    <div id="signUpForm">
         <Form action='/' onSubmit={ onSubmit } >
         <h2>Signup Form</h2>
         <FormGroup>
@@ -32,6 +32,7 @@ const SignUpForm = ({ onSubmit, onChange, errors, user }) => (
             <input id="button" type="button" value="I Already Have An Account"></input>
           </div>
         </Form>
+        </div>
       );
     
     
