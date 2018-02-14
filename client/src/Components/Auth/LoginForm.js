@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import '../Base.css';
 
 
 const LoginForm = ({onSubmit, onChange, errors, user}) => (
@@ -15,7 +16,9 @@ const LoginForm = ({onSubmit, onChange, errors, user}) => (
             <Label for="userPassword">Password</Label>
             <Input type="password" name="password" onChange={ onChange } id="userPassword" placeholder="Shhhh! Don't Tell Anyone!" />
           </FormGroup>
-          <Button>Submit</Button>
+          <div class="loginButton">
+            <input id="login" type="button" value="Login"></input>
+          </div>
         </Form>
       );
     

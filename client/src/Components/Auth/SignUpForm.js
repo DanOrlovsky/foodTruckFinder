@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-// const SignUpForm = ({ onSubmit, onChange, errors, user}) => (
-//     <h2>Signup Forms</h2>
-// );
+import '../Base.css';
 
 
 const SignUpForm = ({ onSubmit, onChange, errors, user }) => (
+   
         <Form action='/' onSubmit={ onSubmit } >
+        <h2>Signup Form</h2>
         <FormGroup>
             <Label for="userZipcode">Zipcode</Label>
-            <Input type="email" name="email" onChange={ onChange } id="userZipcode" placeholder="#####" />
+            <Input type="email" name="email" onChange={ onChange } id="userZip" placeholder="#####" />
           </FormGroup>
           <FormGroup>
             <Label for="userEmail">Email</Label>
@@ -27,7 +27,10 @@ const SignUpForm = ({ onSubmit, onChange, errors, user }) => (
             I am the owner of an AWESOME Food Truck!
           </Label>
         </FormGroup>
-          <Button>Submit</Button>
+        <div class="loginButton">
+            <input id="button" type="button" value="Create Account"></input>
+            <input id="button" type="button" value="I Already Have An Account"></input>
+          </div>
         </Form>
       );
     

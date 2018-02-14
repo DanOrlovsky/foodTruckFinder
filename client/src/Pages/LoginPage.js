@@ -7,6 +7,7 @@ import Auth from '../Modules/Auth';
 
 
 class LoginPage extends Component {
+    
     state = {
         errors: {},
         email: "",
