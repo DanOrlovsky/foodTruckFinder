@@ -13,7 +13,7 @@ class DashboardPage extends Component {
 
     render() {
         return (
-            <h2>Dashboard!</h2>
+              <h2>DashboardPage</h2>      
         )
     }
 }

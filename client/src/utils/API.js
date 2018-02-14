@@ -12,7 +12,8 @@ export default {
     },
 
     getUserFromToken: () => {
-        return axios.get('/auth/dataFromToken', Auth.getToken());
+        const data = { token: Auth.getToken() };
+        return axios.post('/auth/dataFromToken/', data);
     },
 
     getLocalTrucks: (lat, lng, dist) => {

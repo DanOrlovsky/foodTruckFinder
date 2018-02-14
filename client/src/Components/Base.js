@@ -6,6 +6,20 @@ import './Base.css';
 
 class Base extends Component {
 
+    state = {
+        isAuthenticated: false,
+    }
+
+    componentDidMount() {
+        this.setState({ isAuthenticated: Auth.isUserAuthenticated() });
+    }
+
+    logOut = event => {
+        event.preventDefault();
+        Auth.deauthenticateUser();
+        this.setState({ isAuthenticated: false });
+    }
+
     render() {
         return (
             <div className='body-base'>
@@ -14,10 +28,10 @@ class Base extends Component {
                         <Link to="/">Food Truck Finder</Link>
                     </div>
                     <div className="top-bar-right">
-                        { Auth.isUserAuthenticated() ? (
+                        { this.state.isAuthenticated ? (
                             <div>
                                 <Link to="/api/dashboard">User</Link>
-                                <Link to="/logout">Logout</Link>
+                                <Link to="/logout" onClick={ this.logOut }>Logout</Link>
                             </div>
                         ) : (
                             <div>
