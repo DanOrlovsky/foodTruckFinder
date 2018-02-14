@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Auth from '../Modules/Auth';
 import './Base.css';
+import NavBar from './NavBar/NavBar.js';
 
 class Base extends Component {
 
@@ -14,6 +15,7 @@ class Base extends Component {
                         <Link to="/">Food Truck Finder</Link>
                     </div>
                     <div className="top-bar-right">
+                    <NavBar />
                         { Auth.isUserAuthenticated() ? (
                             <div>
                                 <Link to="/api/dashboard">User</Link>

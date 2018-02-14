@@ -8,11 +8,13 @@ import SignUpPage from './Pages/SignUpPage';
 import DashboardPage from './Pages/DashboardPage';
 import { Button } from 'reactstrap';
 
+
 injectTapEventPlugin();
 
 class App extends Component {
   render() {
     return (
+      
       
         <Router>
           <Switch>
