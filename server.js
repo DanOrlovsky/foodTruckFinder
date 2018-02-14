@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require("express");
 const path = require("path");
 const morgan = require('morgan');
@@ -5,7 +7,7 @@ const bodyParser = require('body-parser');
 const setup = require('./config').init();
 const app = express();
 const passport = require('passport');
-
+const User = require('./db/models/user');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -19,15 +21,13 @@ if (process.env.NODE_ENV === "production") {
 app.use(morgan('dev'));
 
 
-/// CONFIGURE PASSPORT
-app.use(passport.initialize());
 const signupStrategy = require('./passport/localSignup');
 const loginStrategy = require('./passport/localLogin');
 passport.use('local-signup', signupStrategy);
 passport.use('local-login', loginStrategy);
 
-const authMiddleware = require('./passport/authCheck');
-app.use('/api', authMiddleware);
+/*const authMiddleware = require('./passport/authCheck');
+app.use('/api', authMiddleware);*/
 
 // DB Setup
 const db = process.env.MONGO_DB || setup.db.uri;

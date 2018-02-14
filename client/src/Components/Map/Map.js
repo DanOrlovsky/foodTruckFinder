@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { geolocated } from 'react-geolocated';
-import { Label, Form, FormGroup, Button, Input } from 'reactstrap';
+import { Label, Form, Row, Col, FormGroup, Button, Input } from 'reactstrap';
 import API from '../../utils/API';
 import {
   withGoogleMap,
@@ -56,14 +56,12 @@ class FoodTruckMapComponent extends Component {
         <h2>Please enable Location services</h2> :
         this.props.coords ? 
           <div>
-            <Form onSubmit={ this.processForm }>
-              <FormGroup>
-                <Label for="distance">Distance </Label>
+            <Form onSubmit={ this.processForm } inline>
+              <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                <Label for="distance" className="mr-sm-0"><h2>Distance</h2> </Label>
                 <Input value={ this.state.distance } name="distance" onChange={ this.onChange } type="text" />
               </FormGroup>
-              <FormGroup>
-                <Button>Submit</Button>
-              </FormGroup>
+              <Button>Submit</Button>
             </Form>
             <FoodTruckMap 
               defaultCenter={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }}

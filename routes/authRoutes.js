@@ -5,13 +5,10 @@
 const express = require('express');
 const validator = require('validator');
 const router = new express.Router();
-const AWS = require('aws-sdk');
 const passport = require('passport');
 const User = require('../db/models/user');
 const jwt = require('jsonwebtoken');
 const config = require('../config').init();
-let myBucket = "food-truck-avatars";
-let s3 = new AWS.S3({ params: { Bucket: myBucket }});
 
 const validateSignupForm = payload => {
     const errors = {};
@@ -66,8 +63,9 @@ const validateLoginForm = payload => {
     }
 }
 
-router.post('/signup', (req, res) => {
+router.post('/signup', (req, res, next) => {
     const validationResult = validateSignupForm(req.body);
+    console.log(req.body);
     if(!validationResult.success) {
         return res.json({
             success: false,
@@ -75,13 +73,34 @@ router.post('/signup', (req, res) => {
             errors: validationResult.errors,
         });
     }
-    return res.status(200);
+    return passport.authenticate("local-signup", (err, token) => {
+        if(err) {
+            // Check if email is already being used.
+            if(err.name === 'MongoError' && err.code === 11000) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Check the form for errors",
+                    errors : {
+                        email: "The email is already being used"
+                    }
+                })
+            }
+
+            return res.status(400).json({
+                success: false,
+                message: "Could not process the form",
+            });
+        }
+        console.log(token);
+        return res.status(200).json({
+            success: true,
+            token,
+        })
+    })
 });
 
 router.post('/login', (req, res, next) => {
     const validationResult = validateLoginForm(req.body);
-    
-
     if(!validationResult.success) {
         return res.json({
             success: false,
@@ -89,7 +108,7 @@ router.post('/login', (req, res, next) => {
             errors: validationResult.errors,
         }); 
     }
-    passport.authenticate("local-login", (err, token, userData) => {
+    return passport.authenticate("local-login", (err, token, userData) => {
 
         if(err) {
             

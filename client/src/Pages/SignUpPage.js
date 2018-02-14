@@ -7,10 +7,12 @@ class SignUpPage extends Component
 
     state = {
         errors: {},
+        message: "",
         user: {
             email: '',
             zipCode: '',
             password: '',
+            comparePassword: '',
             isFoodTruck: '',
         }
     }
@@ -21,7 +23,6 @@ class SignUpPage extends Component
     }
 
     onChange = event => {
-        console.log(event);
         const field = event.target.name;
         const user = this.state.user;
         user[field] = event.target.value;
@@ -29,14 +30,16 @@ class SignUpPage extends Component
             user,
         });
     }
-    updateCheck = event => {
-        console.log(event);
-    }
+
     processForm = event => {
         event.preventDefault();
-        
-        const { email, password, zipCode } = this.state.user;
-        const formData= { email: email, password: password, zipCode: zipCode };
+        const { email, password, comparePassword, zipCode, isFoodTruck } = this.state.user;
+        let boolFoodTruck = isFoodTruck === "on" ? true : false;
+        if(password !== comparePassword) {
+            this.setState({ errors: {comparePasswordError: "Passwords do not match." }})
+            return;
+        }
+        const formData= { email: email, password: password, zipCode: zipCode, isFoodTruck: boolFoodTruck };
         
         API.saveNewUser(formData).then((data) => {
             console.log(data);
@@ -45,6 +48,7 @@ class SignUpPage extends Component
                 errors.summary = data.data.message;
                 this.setState({ errors });
             };
+            console.log(data);
         }).catch((err, code) => { 
             console.log(err)
         });
@@ -56,6 +60,7 @@ class SignUpPage extends Component
             <SignUpForm
                 onSubmit={ this.processForm }
                 onChange={ this.onChange }
+                message={this.state.message }
                 errors={this.state.errors}
                 updateCheck={this.updateCheck }
                 user={this.state.user}
