@@ -71,7 +71,7 @@ class FoodTruckMapComponent extends Component {
             <FoodTruckMap 
               defaultCenter={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }}
               loadingElement= { <div style={{ height: `100%` }} />} 
-              containerElement= { <div style={{ height: `400px` }} /> }
+              containerElement= { <div style={{ height: `800px` }} /> }
               zoom= {this.state.zoom }
               mapElement= { <div style={{ height: `100%` }} /> }>
               { 

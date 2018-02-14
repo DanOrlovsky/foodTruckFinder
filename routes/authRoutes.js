@@ -115,7 +115,8 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post("/dataFromToken", (req, res, next) => {
-    if(!req.body.token) return res.status(401).end();    const token = req.body.token;
+    if(!req.body.token) return res.status(401).end();    
+    const token = req.body.token;
 
     return jwt.verify(token, config.jwtSecret, (err, decoded) => {
         if(err) return res.status(401).end();

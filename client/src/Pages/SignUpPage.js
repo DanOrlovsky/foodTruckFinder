@@ -36,7 +36,7 @@ class SignUpPage extends Component
     processForm = event => {
         event.preventDefault();
         
-        const {email, password, zipCode } = this.state.user;
+        const { email, password, zipCode } = this.state.user;
         const formData= { email: email, password: password, zipCode: zipCode };
         
         API.saveNewUser(formData).then((data) => {
@@ -49,7 +49,7 @@ class SignUpPage extends Component
         }).catch((err, code) => { 
             console.log(err)
         });
-        //xhr.send(formData);
+        
     }
 
     render() {

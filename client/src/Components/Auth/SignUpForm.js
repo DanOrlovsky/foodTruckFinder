@@ -1,56 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-const SignUpForm = ({ onSubmit, onChange, errors, user}) => (
-    <h2>Signup Forms</h2>
-)
-// const SignUpForm = ({ onSubmit, onChange, errors, user }) => (
-//     <Card className="container">
-//         <form action='/' onSubmit={ onSubmit }>
-//             <h2 >Sign Up</h2>
-//             { errors.summary && <p className="error-message">{errors.summary}</p> }
+import { Container, CheckBox, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
-//             <div className="field-line">
-//                 <TextField 
-//                     floatingLabelText="Email"
-//                     name="email"
-//                     type='email'
-//                     errorText={errors.email}
-//                     onChange={onChange}
-//                     value={user.email} />
-//             </div>
-//             <div className="field-line">
-//                 <TextField 
-//                     floatingLabelText="Zip Code"
-//                     name="zipCode"
-//                     errorText={errors.zipCode}
-//                     onChange={onChange}
-//                     value={user.zipCode} />
-//             </div>
-//             <div className="field-line">
-//                 <TextField 
-//                     floatingLabelText="Password"
-//                     name="password"
-//                     type="password"
-//                     errorText={errors.password}
-//                     onChange={onChange}
-//                     value={user.password} />
-//             </div>
-//             <div className="field-line">
-//                 {/*<Checkbox 
-//                     label="Are you a foodtruck?" 
-//                     checked={this.state.isFoodTruck} 
-//                 onCheck= { updateCheck.bind(this) }/>*/}
-//             </div>
 
-//             <div className="button-line">
-//                 <RaisedButton type="submit" label="Create new account" primary />
-//             </div>
-//             <CardText>Already have an account?  <Link to="/login">Log in</Link>!</CardText>
-//         </form>
-//     </Card>
-// );
+const SignUpForm = ({ onSubmit, onChange, errors, user }) => (
+    <Container>
+    { errors ? <h2>{ errors.message }</h2> : "" }
+    <Form action='/' onSubmit={ onSubmit } >
+      <FormGroup row>
+        <Label for="userEmail" sm={2}>Email</Label>
+        <Col sm={10}>
+          <Input type="email" name="email" onChange={ onChange } id="email" placeholder="foodtruckfinder@gmail.com" />
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label for="userPassword" sm={2}>Password</Label>
+        <Col sm={10}>
+          <Input type="password" name="password" onChange={ onChange } id="password" placeholder="Shhhh! Don't Tell Anyone!" />
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label for="comparePassword" sm={2}>Verify Password</Label>
+        <Col sm={10}>
+          <Input type="password" name="comparePassword" onChange={ onChange } id="comparePassword" placeholder="Shhhh! Don't Tell Anyone!" />
+        </Col>
+      </FormGroup>
+      <FormGroup check row>
+        <Col sm={{size: 10, offset: 2 }}>
+          <Button>Submit</Button>
+        </Col>
+      </FormGroup>
+    </Form>
+  </Container>
+);
 
 // SignUpForm.propTypes = {
 //     onSubmit: PropTypes.func.isRequired,
