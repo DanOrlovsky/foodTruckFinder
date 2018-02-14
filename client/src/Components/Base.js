@@ -3,8 +3,23 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Auth from '../Modules/Auth';
 import './Base.css';
+import NavBar from './NavBar/NavBar.js';
 
 class Base extends Component {
+
+    state = {
+        isAuthenticated: false,
+    }
+
+    componentDidMount() {
+        this.setState({ isAuthenticated: Auth.isUserAuthenticated() });
+    }
+
+    logOut = event => {
+        event.preventDefault();
+        Auth.deauthenticateUser();
+        this.setState({ isAuthenticated: false });
+    }
 
     render() {
         return (
@@ -14,10 +29,10 @@ class Base extends Component {
                         <Link to="/">Food Truck Finder</Link>
                     </div>
                     <div className="top-bar-right">
-                        { Auth.isUserAuthenticated() ? (
+                        { this.state.isAuthenticated ? (
                             <div>
                                 <Link to="/api/dashboard">User</Link>
-                                <Link to="/logout">Logout</Link>
+                                <Link to="/logout" onClick={ this.logOut }>Logout</Link>
                             </div>
                         ) : (
                             <div>

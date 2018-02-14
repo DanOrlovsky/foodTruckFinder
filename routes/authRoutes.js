@@ -8,6 +8,8 @@ const router = new express.Router();
 const AWS = require('aws-sdk');
 const passport = require('passport');
 const User = require('../db/models/user');
+const jwt = require('jsonwebtoken');
+const config = require('../config').init();
 let myBucket = "food-truck-avatars";
 let s3 = new AWS.S3({ params: { Bucket: myBucket }});
 
@@ -73,12 +75,13 @@ router.post('/signup', (req, res) => {
             errors: validationResult.errors,
         });
     }
-    
     return res.status(200);
 });
 
 router.post('/login', (req, res, next) => {
     const validationResult = validateLoginForm(req.body);
+    
+
     if(!validationResult.success) {
         return res.json({
             success: false,
@@ -87,14 +90,16 @@ router.post('/login', (req, res, next) => {
         }); 
     }
     passport.authenticate("local-login", (err, token, userData) => {
+
         if(err) {
+            
             if(err.name === 'IncorrectCredentialsError') {
                 return res.json({
                     success: false,
                     message: err.message,
                 })
             }
-
+            
             return res.json({
                 success: false,
                 message: "We could not log you in.",
@@ -105,14 +110,23 @@ router.post('/login', (req, res, next) => {
             message: "You have successfully logged in!",
             token,
             user: userData
-        });
+        })
     })(req, res, next);
 });
 
-router.get("/dataFromToken", (req, res, next) => {
-    User.findOne({ where: { token: req.token}}).then((user) => {
-        return res.json(user);
-    }).catch(err => res.json({ error: "You must be lost."}));
+router.post("/dataFromToken", (req, res, next) => {
+    if(!req.body.token) return res.status(401).end();    const token = req.body.token;
+
+    return jwt.verify(token, config.jwtSecret, (err, decoded) => {
+        if(err) return res.status(401).end();
+        const userId = decoded.sub;
+        return User.findById(userId, (userErr, user) => {
+            if(userErr || !user) {
+                return res.status(401).end();
+            }
+            return res.json(user);
+        })
+    });
 })
 
 module.exports = router;

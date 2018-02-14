@@ -22,7 +22,6 @@ class FoodTruckMapComponent extends Component {
   state = {
     distance: 10,
     zoom: 15,
-    onFormSubmit: false,
     foodTrucks: [],
   }
 
@@ -36,15 +35,12 @@ class FoodTruckMapComponent extends Component {
 
   processForm = event => {
     event.preventDefault();
-    this.setState({ onFormSubmit: true });
     API.getLocalTrucks(this.props.coords.latitude, this.props.coords.longitude, this.state.distance).then(resp => {
-      this.setState({ foodTrucks: resp.data, onFormSubmit: false });
-      
+      this.setState({ foodTrucks: resp.data });      
     })  
   }
   
   componentWillReceiveProps(nextProps) {
-    if(this.state.onFormSubmit) return;
     if(nextProps.coords !== this.props.coords) {
       let coords = {
         lat: nextProps.coords.latitude,
@@ -55,6 +51,7 @@ class FoodTruckMapComponent extends Component {
       })
     }
   }
+
   render() {
     return !this.props.isGeolocationAvailable ? 
       <h2>Your browser needs to support geolocation</h2> : 

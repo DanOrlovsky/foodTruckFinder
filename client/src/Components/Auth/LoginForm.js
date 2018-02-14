@@ -20,7 +20,8 @@ const LoginForm = ({onSubmit, onChange, errors, user}) => (
             <input id="login" type="button" value="Login"></input>
           </div>
         </Form>
-      );
+  );
+
     
     
 LoginForm.propTypes = {

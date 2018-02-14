@@ -13,19 +13,25 @@ class LoginPage extends Component {
         email: "",
         password: "",
         isLoggedIn: false,
+        user: {},
     }
 
     processForm = event => {
         event.preventDefault();
         API.loginUser({ email: this.state.email, password: this.state.password}).then(resp => {
-            Auth.authenticateUser(resp.data.token);
-            this.setState({ isLoggedIn: true });
+            if(resp.data.success === false) {
+                if(resp.data.message) {
+                    this.setState({ errors: { message: resp.data.message }} );
+                }
+            } else {
+                Auth.authenticateUser(resp.data.token);
+                this.setState({ isLoggedIn: true });
+            }
         }).catch(err => console.log(err));
     }
 
     onChange = event => {
         const { name, value } = event.target;
-        console.log(name, value);
         this.setState({
             [name]: value,
         })
@@ -34,6 +40,7 @@ class LoginPage extends Component {
     render() {
         return(
              this.state.isLoggedIn ? ( <Redirect to="/" /> ) : (
+                 
                 <LoginForm
                     onSubmit={ this.processForm }
                     onChange={ this.onChange}
