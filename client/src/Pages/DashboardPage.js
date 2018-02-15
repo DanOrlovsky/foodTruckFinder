@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import API from '../utils/API';
-import { Col,Container, Label, Form, FormGroup,  Input } from 'reactstrap';
-
+import { Link } from 'react-router-dom';
+import UserInfoForm from '../Components/Auth/UserInfoForm';
 class DashboardPage extends Component {
     state = {
         errors: {},
@@ -9,58 +9,31 @@ class DashboardPage extends Component {
     }
 
     componentDidMount() {
-        API.getUserFromToken().then(user => console.log(user));
+        API.getUserFromToken().then(user => {
+            this.setState({user: user.data });
+        });
     }
 
+
+
     render() {
+        let page = null;
+        if(!this.state.user.email) {
+            page = <h2>Please <Link to="/login">log in</Link> to your account.</h2>;
+        } else if(this.state.user.role === "Foodtruck") {
+            page = 
+                <div>
+                    <h2>This is a foodtruck!</h2>
+                    <UserInfoForm user={this.state.user} />
+                </div>;
+        } else {
+            page = <UserInfoForm user={this.state.user} />;
+        }
         return (
-            <Container>
-               <Form>
-                   <FormGroup row>
-                       <Label for="email">email</Label>
-                       <Col sm={10}>
-                            <Input value={ this.state.user.email } name="email" id="email"onChange={ this.onChange } type="text" />
-                       </Col>
-                   </FormGroup>
-                   <FormGroup row>
-                       <Label for="firstname">firstname</Label>
-                       <Col sm={10}>
-                            <Input value={ this.state.user.firstname } name="firstname" id="firstname"onChange={ this.onChange } type="text" />
-                       </Col>
-                   </FormGroup>
-                   <FormGroup row>
-                       <Label for="lastname">lastname</Label>
-                       <Col sm={10}>
-                            <Input value={ this.state.user.lastname } name="lastname" id="lastname"onChange={ this.onChange } type="text" />
-                       </Col>
-                   </FormGroup>
-                   <FormGroup row>
-                       <Label for="address">address</Label>
-                       <Col sm={10}>
-                            <Input value={ this.state.user.address } name="address" id="address"onChange={ this.onChange } type="text" />
-                       </Col>
-                   </FormGroup>
-                   <FormGroup row>
-                       <Label for="city">city</Label>
-                       <Col sm={10}>
-                            <Input value={ this.state.user.city } name="city" id="city"onChange={ this.onChange } type="text" />
-                       </Col>
-                   </FormGroup>
-                   <FormGroup row>
-                       <Label for="zipcode">zipcode</Label>
-                       <Col sm={10}>
-                            <Input value={ this.state.user.zipcode } name="zipcode" id="zipcode"onChange={ this.onChange } type="text" />
-                       </Col>
-                   </FormGroup>
-
-
-
-            
-
-                                   
-               </Form>    
-           </Container>
-        )
+            <div>
+                {page}
+            </div>
+        );
     }
 }
 

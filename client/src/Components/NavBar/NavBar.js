@@ -41,7 +41,7 @@ export default class NavBar extends Component {
           { this.props.isAuthenticated ? (
             <div>
               <NavItem>
-                <NavLink href="/dashboard">User</NavLink>
+                <NavLink href="/dashboard">Dashboard</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/logout" onClick={ this.logOut }>Logout</NavLink>

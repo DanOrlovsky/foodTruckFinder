@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import SignUpForm from '../Components/Auth/SignUpForm';
 import API from '../utils/API';
-
+import Auth from '../Modules/Auth';
 class SignUpPage extends Component
 {
 
     state = {
         errors: {},
         message: "",
+        isLoggedIn: false,
         user: {
             email: '',
             zipCode: '',
@@ -41,14 +43,14 @@ class SignUpPage extends Component
         }
         const formData= { email: email, password: password, zipCode: zipCode, isFoodTruck: boolFoodTruck };
         
-        API.saveNewUser(formData).then((data) => {
-            console.log(data);
-            if(!data.data.success) {
-                const errors = data.data.errors ? data.data.errors : {};
-                errors.summary = data.data.message;
-                this.setState({ errors });
+        API.saveNewUser(formData).then((resp) => {
+            if(!resp.data.success) {
+                const errors = resp.data.errors ? resp.data.errors : {};
+                this.setState({ errors, message: resp.data.message });
+                return;
             };
-            console.log(data);
+            Auth.authenticateUser(resp.data.token);
+            this.setState({ isLoggedIn: true });            
         }).catch((err, code) => { 
             console.log(err)
         });
@@ -57,14 +59,16 @@ class SignUpPage extends Component
 
     render() {
         return(
-            <SignUpForm
-                onSubmit={ this.processForm }
-                onChange={ this.onChange }
-                message={this.state.message }
-                errors={this.state.errors}
-                updateCheck={this.updateCheck }
-                user={this.state.user}
-            />
+            this.state.isLoggedIn ? ( <Redirect to="/dashboard" /> ) : 
+            ( 
+                <SignUpForm
+                    onSubmit={ this.processForm }
+                    onChange={ this.onChange }
+                    message={this.state.message }
+                    errors={this.state.errors}
+                    updateCheck={this.updateCheck }
+                    user={this.state.user} />
+            )
         )
     }
 }
