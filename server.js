@@ -26,9 +26,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(morgan('dev'));
 
 // Setup passport
-const signupStrategy = require('./passport/localSignup');
 const loginStrategy = require('./passport/localLogin');
-passport.use('local-signup', signupStrategy);
 passport.use('local-login', loginStrategy);
 
 
