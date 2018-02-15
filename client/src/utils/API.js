@@ -4,7 +4,6 @@ import Auth from '../Modules/Auth';
 
 export default {
     saveNewUser: (userData) => {
-        console.log(userData);
         return axios.post('/auth/signup', userData);
     },
 

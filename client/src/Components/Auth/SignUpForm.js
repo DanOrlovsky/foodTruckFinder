@@ -13,7 +13,7 @@ const SignUpForm = ({ message, onSubmit, onChange, errors, user }) => (
       <FormGroup>
         <Label for="userEmail">Email</Label>
         <Input type="email" name="email" onChange={ onChange } id="email" placeholder="foodtruckfinder@gmail.com" />
-        { errors.emailAlreadyExists ? <label className="badge badge-danger">{errors.emailAlreadyExists }</label> : "" }
+        { errors.email ? <label className="badge badge-danger">{errors.email }</label> : "" }
       </FormGroup>
       <FormGroup>
         <Label for="userZipcode">Zipcode</Label>
