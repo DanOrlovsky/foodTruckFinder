@@ -5,37 +5,43 @@ const UserInfoForm = props => (
     <Container>
         <Form>
             <FormGroup row>
-                <Label for="email">email</Label>
+                <Label for="email">Email</Label>
                 <Col sm={10}>
                     <Input value={ props.user.email } name="email" id="email"onChange={ props.onChange } type="text" />
                 </Col>
             </FormGroup>
             <FormGroup row>
-                <Label for="firstname">firstname</Label>
+                <Label for="firstName">First Name</Label>
                 <Col sm={10}>
-                    <Input value={ props.user.firstname } name="firstname" id="firstname"onChange={ props.onChange } type="text" />
+                    <Input value={ props.user.firstName } name="firstName" id="firstName"onChange={ props.onChange } type="text" />
                 </Col>
             </FormGroup>
             <FormGroup row>
-                <Label for="lastname">lastname</Label>
+                <Label for="lastName">Last Name</Label>
                 <Col sm={10}>
-                    <Input value={ props.user.lastname } name="lastname" id="lastname"onChange={ props.onChange } type="text" />
+                    <Input value={ props.user.lastName } name="lastName" id="lastName"onChange={ props.onChange } type="text" />
                 </Col>
             </FormGroup>
             <FormGroup row>
-                <Label for="address">address</Label>
+                <Label for="address">Address</Label>
                 <Col sm={10}>
                     <Input value={ props.user.address } name="address" id="address"onChange={ props.onChange } type="text" />
                 </Col>
             </FormGroup>
             <FormGroup row>
-                <Label for="city">city</Label>
-                <Col sm={10}>
+                <Label for="city">City</Label>
+                <Col lg={2} md={4} sm={10}>
                     <Input value={ props.user.city } name="city" id="city"onChange={ props.onChange } type="text" />
                 </Col>
             </FormGroup>
             <FormGroup row>
-                <Label for="zipcode">zipcode</Label>
+                <Label for="State">State</Label>
+                <Col lg={2} md={4} sm={10}>
+                    <Input value={ props.user.state } name="state" id="state"onChange={ props.onChange } type="text" />
+                </Col>
+            </FormGroup>
+            <FormGroup row>
+                <Label for="zipcode">Zip Code</Label>
                 <Col sm={10}>
                     <Input value={ props.user.zipCode } name="zipcode" id="zipcode"onChange={ props.onChange } type="text" />
                 </Col>
