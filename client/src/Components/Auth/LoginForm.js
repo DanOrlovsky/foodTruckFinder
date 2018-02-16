@@ -20,7 +20,9 @@ const LoginForm = ({onSubmit, onChange, errors, user}) => (
             <input id="login" type="submit" value="Login"></input>
           </div>
         </Form>
+        <div className="go2SignUp">
         <h4>Need an account?  <Link to="/signup">Create One</Link></h4>
+        </div>
       </div>
   );
 
