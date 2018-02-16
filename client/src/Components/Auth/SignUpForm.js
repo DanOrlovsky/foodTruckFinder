@@ -25,7 +25,7 @@ const SignUpForm = ({ message, onSubmit, onChange, errors, user }) => (
       </FormGroup>
       <FormGroup>
         <Label for="verifyPassword">Verify Password</Label>
-        <Input type="password" name="comparePassword" onChange={ onChange } id="verifyPassword" placeholder="Shhhh! Don't Tell Anyone!" />
+        <Input type="password" name="comparePassword" onChange={ onChange } id="verifyPassword" placeholder="One more time with feeling..." />
         { errors.comparePasswordError ? <label className="badge badge-danger">{errors.comparePasswordError }</label> : "" }
       </FormGroup>
       <FormGroup check>

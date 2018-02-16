@@ -21,6 +21,11 @@ class Base extends Component {
                     </div>
                 </div>
                 { this.props.children }
+                <div class="footer-copyright">
+                    <div class="container text-center">
+                       © 2018 Copyright: Team C# Guru Dan's Cheer Squad
+                    </div>
+                </div>
             </div>
         )
     };
