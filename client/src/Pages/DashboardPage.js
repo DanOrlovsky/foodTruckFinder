@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import API from '../utils/API';
 import { Link } from 'react-router-dom';
 import UserInfoForm from '../Components/Auth/UserInfoForm';
+
 class DashboardPage extends Component {
     state = {
         errors: {},
@@ -14,6 +15,12 @@ class DashboardPage extends Component {
         });
     }
 
+    onUserFormChange = event => {
+        const {name, value } = event.target;
+        const newUser = this.state.user;
+        newUser[name] = value;
+        this.setState( { user: newUser });
+    }
 
 
     render() {
@@ -24,10 +31,10 @@ class DashboardPage extends Component {
             page = 
                 <div>
                     <h2>This is a foodtruck!</h2>
-                    <UserInfoForm user={this.state.user} />
+                    <UserInfoForm user={this.state.user} onChange={ this.onUserFormChange } />
                 </div>;
         } else {
-            page = <UserInfoForm user={this.state.user} />;
+            page = <UserInfoForm user={this.state.user} onChange={ this.onUserFormChange }/>;
         }
         return (
             <div>
