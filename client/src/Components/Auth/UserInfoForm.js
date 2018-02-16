@@ -9,7 +9,7 @@ const UserInfoForm = props => (
                     <FormGroup row>
                         <Label for="email" className="col-sm-2 control-label">Email</Label>
                         <Col sm={10}>
-                            <Input value={ props.user.email } name="email" id="email" onChange={ props.onChange } type="text" />
+                            <Input value={ props.user.email } name="email" id="email" onChange={ props.onChange } disabled6 type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>

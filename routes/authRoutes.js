@@ -111,9 +111,6 @@ router.post('/signup', (req, res, next) => {
             token,
         })
     })
-
-    //return passport.authenticate("local-signup", (err, token) => {
-    //})
 });
 
 router.post('/login', (req, res, next) => {
