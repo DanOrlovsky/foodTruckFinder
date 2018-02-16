@@ -166,4 +166,11 @@ router.post("/dataFromToken", (req, res, next) => {
     });
 })
 
+router.post("/updateUser", (req, res) => {
+    User.update(req.body).then(userUpdated => {
+        return res.json({
+            success: true,
+        })
+    }).catch(err => res.json(err))
+})
 module.exports = router;
