@@ -15,13 +15,13 @@ class Base extends Component {
                     <div className="top-bar-left">
                         <Link to="/">
                             <div className='logobox'>
-                                <a href="/"><img src="../ImagesC/FTF-logo_OneColor_Truck.png" width="100%" padding="0.5rem, 0"/></a>
+                                <img src="../ImagesC/FTF-logo_OneColor_Truck_Red.png" width="100%" padding="0.5rem, 0"></img>
                             </div> 
                         </Link>
                     </div>
                         <div className="top-bar-middle">
                             <div className='logobox_Words'>
-                            <a href="/"><img src="../ImagesC/Logo_Word.png" width="100%"/></a>
+                                <img src="../ImagesC/FTF_Logo_Red.png" width="100%"></img>
                             </div>
                         </div>
                     <div className="top-bar-right">
