@@ -164,10 +164,12 @@ router.post("/dataFromToken", (req, res, next) => {
 })
 
 router.post("/updateUser", (req, res) => {
-    User.update(req.body).then(userUpdated => {
+    const userToUpdate = new User(req.body);
+    User.replaceOne({"_id": req.body.id }, userToUpdate).then(userUpdated => {
+        console.log(userUpdated);
         return res.json({
             success: true,
         })
-    }).catch(err => res.json(err))
+    }).catch(err => { console.log(err); return res.json(err)})
 })
 module.exports = router;

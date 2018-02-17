@@ -5,11 +5,11 @@ const UserInfoForm = props => (
     <Container>
         <Row>
             <Col lg={{ size: "8", offset: "2" }} md={{ size: "8", offset: "2" }} sm={12}>
-                <Form onSubmit={ props.onUserFormSubmit }>
+                <Form action='/' onSubmit={ props.onSubmit }>
                     <FormGroup row>
                         <Label for="email" className="col-sm-2 control-label">Email</Label>
                         <Col sm={10}>
-                            <Input value={ props.user.email } name="email" id="email" onChange={ props.onChange } disabled6 type="text" />
+                            <Input value={ props.user.email } name="email" id="email" disabled onChange={ props.onChange } type="text" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>

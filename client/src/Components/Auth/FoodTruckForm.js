@@ -33,7 +33,7 @@ const FoodTruckForm = props => (
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Input name="image" type="file" />
+                        <Input name="image" type="file" id="foodTruckImage" />
                     </FormGroup>
                     <FormGroup>
                         <Col sm={{ size: "10", offset: "2" }}>

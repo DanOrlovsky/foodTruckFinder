@@ -18,21 +18,32 @@ const userSchema = new Schema({
         required: true
     },
     // firstName
-    firstName: String,
+    firstName: {
+        type: String,
+        default: "",
+    },
     // lastName
-    lastName: String,
+    lastName: {
+        type: String,
+        default: "",
+    },
     // password
     password: { type: String, required: true, },
-    // addressLine1
-    addressLine1: String,
-    // addressLine2
-    addressLine2: String,
+    // address
+    address: {
+        type: String,
+        default: "",
+    },
     // city
-    city: String,
+    city: {
+        type: String,
+        default: "",
+    },
     // state
-    state: String,
-    // token
-    token: String,
+    state: {
+        type: String,
+        default: "",
+    },
     // zipcode
     zipCode: { type: Number, required: true, },
     // roles User, Foodtruck, Vendor

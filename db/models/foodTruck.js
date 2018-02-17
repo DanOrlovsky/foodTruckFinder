@@ -10,14 +10,26 @@ const foodTruckSchema = new Schema({
     // name
     name: { type:String, required: true },
     loc: {type: [Number], index: '2dsphere' },
-    description: String,
-    cuisine: String,
+    description: {
+        type: String,
+        default: "",
+    },
+    cuisine: {
+        type: String,
+        default: "",
+    },
     // locations
     locations: [ location.locationSchema ],
      // url
-    url: String,
+    url: {
+        type: String,
+        default: "",
+    },
     // imageUrl
-    imageUrl: String,
+    imageUrl: {
+        type: String,
+        default: "",
+    },
     // isOpen
     isOpen: { 
        type: Boolean,
