@@ -9,6 +9,8 @@ body {
   }
 
   .body-base {
+
+
     /* background-color: red; */
     /* background-image: url("Untitled-1.png"); */
     background-size: 100%;
@@ -37,27 +39,30 @@ body {
     padding: 10px 15px;
     margin-bottom: 50px;
     background-color: #F4BC19;
-  }
-  .top-bar::after {
-    content: '';
-    display: block;
-    clear: both;
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+    justify-content: space-between;
   }
   
+  
+  
   .top-bar-left {
-    float: left;
+    justify-content: flex-start;
     font-size: 1.5em;
   }
   
   .top-bar-right {
-    float: right;
+    justify-content: flex-end;
+  }
+
+  .top-bar-middle {
+    justify-content: center;
+    
   }
   
   .top-bar a,
   .nav a {
     text-decoration: none;
-    margin: 0 8px;
-    cursor: pointer;
     }
   
   /*.container {
@@ -89,6 +94,17 @@ body {
     margin: 0 auto;
     cursor: pointer;
   }
+
+  .logobox {
+    width: 50px;
+    padding: 0.5rem;
+  }
+
+  .logobox_Words {
+    width: 150px;
+ }
+
+
 
   #signUpForm {
     margin: 0 auto;
