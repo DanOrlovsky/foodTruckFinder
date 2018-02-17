@@ -1,8 +1,12 @@
 // ----------------------------------------------------
 // --- L O C A L L O G I N . J S ----------------------
 // ----------------------------------------------------
+// Our local login strategy via passport.
+// Checks if a user exists in the database, and then checks if the 
+// password entered hashes correctly.
 
 
+// INCLUDES 
 const jwt = require('jsonwebtoken');
 const User = require('../db/models/user');
 const PassportLocalStrategy = require('passport-local').Strategy;
