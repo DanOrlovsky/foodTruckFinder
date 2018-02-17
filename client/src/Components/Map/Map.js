@@ -79,7 +79,14 @@ class FoodTruckMapComponent extends Component {
                   this.state.foodTrucks.map((current, index) => 
                     <Marker position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } options={{icon: 'images/marker.png'}}>
                       <InfoWindow>
-                        <div>{ current.name }</div>
+                        <div>
+                        <div>{current.name}</div>
+                        <div>{current.description}</div>
+                        <div>{current.cuisine}</div>
+                        <div>{current.url}</div>                         
+                        </div>
+                        <div><img src='http://placehold.it/400x20&text=slide1' alt={event.title} class="img-responsive"/><span>Hello {this.props.name}</span></div>
+  
                       </InfoWindow>   
                     </Marker>
                   ) : ""
