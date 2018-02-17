@@ -4,6 +4,11 @@ import { Row, Col, Container, Label, Form, FormGroup,  Input, Button } from 'rea
 
 const FoodTruckForm = props => (
     <Container>
+        {
+            props.foodTruck.isOpen ? 
+                <Button onClick={ props.toggleFoodtruck } className="btn btn-danger">Close Foodtruck</Button> : 
+                <Button className="btn btn-success" onClick={ props.toggleFoodtruck }>Open Food Truck</Button>
+        }
         <Row>
             <Col lg={{ size: "8", offset: "2" }} md={{ size: "8", offset: "2" }} sm={12}>
                 <h2>Food Truck Info</h2>
@@ -34,6 +39,7 @@ const FoodTruckForm = props => (
                     </FormGroup>
                     <FormGroup row>
                         <Input name="image" type="file" id="foodTruckImage" />
+                        { props.foodTruck.imageUrl ? <img src={ props.foodTruck.imageUrl } alt="Food truck image" /> : "" }
                     </FormGroup>
                     <FormGroup>
                         <Col sm={{ size: "10", offset: "2" }}>
