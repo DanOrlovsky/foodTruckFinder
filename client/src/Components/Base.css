@@ -83,6 +83,7 @@ body {
     padding: 16px;
   }
 
+<<<<<<< HEAD
   .map h2 {
     margin: 10px;
   }
@@ -92,6 +93,16 @@ body {
     background-color:white;
     border-radius: 3px;
     padding: 10px;
+=======
+  .map button {
+    color: #741012;
+    background-color:white;
+    border-radius: 3px;
+    padding: 5px 50px;
+    margin-left: 30%;
+    margin-bottom: 5%;
+    margin-top: 2%;
+>>>>>>> 43a1c6f437396e082fad774a53865b95deb9382e
   }
 
   .map button:hover {
@@ -167,6 +178,7 @@ body {
     background-color: #F4BC19;
   }
 
+<<<<<<< HEAD
   /* .footer {
     position: absolute;
     bottom: 0;
@@ -175,6 +187,8 @@ body {
     line-height: 60px;
     background-color: #f5f5f5;
 } */
+=======
+>>>>>>> 43a1c6f437396e082fad774a53865b95deb9382e
 
  
   
