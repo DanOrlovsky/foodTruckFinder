@@ -33,7 +33,7 @@ class Base extends Component {
                 { this.props.children }
                 <div className="footer-copyright">
                     <div className="container text-center">
-                       © 2018 Copyright Yksvolro Inc.
+                       © 2018 Copyright Food Truck Finder Inc.
                     </div>
                 </div>
             </div>
