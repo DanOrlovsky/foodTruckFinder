@@ -6,16 +6,16 @@ const User = require('../db/models/user');
 
 router.post("/updateUser", (req, res) => {
     const userToUpdate = new User(req.body.userData);
-    User.updateOne({ "_id": req.body.id }, { $set: { userToUpdate}}).then(userUpdated => {
-        console.log(userUpdated);
+    User.findOneAndUpdate({ "_id": userToUpdate._id }, userToUpdate, { upsert: true }).then(userUpdated => {
         return res.json({
             success: true,
         })
     }).catch(err => { console.log(err); return res.json(err)})
 })
 
-router.post("/updateFoodTruck", (req, res) => {
-    // Food truck image will be in req.body.image
+router.post("/addImage", (req, res) => {
+    // Food truck image will be in req.body.imageFile.
+    // Foodtruck ID is in req.body.id
 })
 
 module.exports = router;

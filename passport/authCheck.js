@@ -1,10 +1,16 @@
 // ----------------------------------------------------
 // --- A U T H C H E C K . J S ------------------------
 // ----------------------------------------------------
+// Takes a token and verifies it using JWT.
+// 
+
+// INCLUDES
 const jwt = require('jsonwebtoken');
 const config = require('../config').init();
 const User = require('../db/models/user');
 
+
+// Function serves as middleware on the /api route.
 module.exports = (req, res, next) => {
     if(!req.body.token) return res.status(401).end();
     const token = req.body.token;
