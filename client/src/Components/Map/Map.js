@@ -59,7 +59,7 @@ class FoodTruckMapComponent extends Component {
             <Form onSubmit={ this.processForm } inline>
             <div className="mx-auto">
               <FormGroup className="map">
-                <Label for="distance" className="mr-sm-0"><h2>Distance</h2> </Label>
+                <Label for="distance" className="mr-sm-0"><h2>Distance: </h2> </Label>
                 <Input value={ this.state.distance } name="distance" onChange={ this.onChange } type="text" />
               </FormGroup>
               <div className="button mx-auto">

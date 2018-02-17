@@ -61,7 +61,7 @@ app.get("*", function(req, res) {
 });
 
 
-const PORT = process.env.PORT || 8889;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
