@@ -55,7 +55,7 @@ class FoodTruckMapComponent extends Component {
         !this.props.isGeolocationEnabled ? 
         <h2>Please enable Location services</h2> :
         this.props.coords ? 
-          <div>
+        <div className="map">
             <Form onSubmit={ this.processForm } inline>
               <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                 <Label for="distance" className="mr-sm-0"><h2>Distance</h2> </Label>
@@ -83,6 +83,7 @@ class FoodTruckMapComponent extends Component {
             </FoodTruckMap>
           </div>
         : <h2>Getting your coordinates.</h2>  
+        
   }
 } 
 

@@ -1,18 +1,33 @@
+/* font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Slab', serif;
+font-family: 'Roboto Mono', monospace;
+font-family: 'Quattrocento Sans', sans-serif; 
+font-family: 'Alegreya', serif;*/
+
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+  height: 100%;
 }
 
 body {
     margin: 0;
     font-size: 16px;
     text-decoration: none;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .body-base {
     /* background-color: red; */
     /* background-image: url("Untitled-1.png"); */
     background-size: 100%;
-    height: 100%;
+    /* height: 100%; */
+    flex: 1 0 auto;
+    color: #741012;
   }
   
   .top-bar a {
@@ -37,34 +52,28 @@ body {
     padding: 10px 15px;
     margin-bottom: 50px;
     background-color: #F4BC19;
-  }
-  .top-bar::after {
-    content: '';
-    display: block;
-    clear: both;
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+    justify-content: space-between;
   }
   
   .top-bar-left {
-    float: left;
+    justify-content: flex-start;
     font-size: 1.5em;
   }
   
   .top-bar-right {
-    float: right;
+    justify-content: flex-end;
+  }
+
+  .top-bar-middle {
+    justify-content: center;
   }
   
   .top-bar a,
   .nav a {
     text-decoration: none;
-    margin: 0 8px;
-    cursor: pointer;
     }
-  
-  /*.container {
-    margin: 0 auto;
-    text-align: center;
-    width: 700px;
-  }*/
   
   .card-heading {
     padding: 16px;
@@ -72,6 +81,23 @@ body {
   
   .field-line, .button-line {
     padding: 16px;
+  }
+
+  .map h2 {
+    margin: 10px;
+  }
+  .map button {
+    margin: 15px;
+    color: #741012;
+    background-color:white;
+    border-radius: 3px;
+    padding: 10px;
+  }
+
+  .map button:hover {
+    background-color: #741012;
+    color: white;
+    cursor: pointer;
   }
   
   .error-message {
@@ -89,6 +115,15 @@ body {
     margin: 0 auto;
     cursor: pointer;
   }
+
+  .logobox {
+    width: 50px;
+    padding: 0.5rem;
+  }
+
+  .logobox_Words {
+    width: 150px;
+ }
 
   #signUpForm {
     margin: 0 auto;
@@ -119,3 +154,31 @@ body {
     font-size: 14px;
     padding-top: 15px;
   }
+
+  .footer-copyright {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    margin-top: 10px;
+    color:#741012;
+    font-weight: bold;
+    background-color: #F4BC19;
+  }
+
+  /* .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f5f5f5;
+} */
+
+ 
+  
+
+
+ 
+  

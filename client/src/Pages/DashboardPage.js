@@ -27,8 +27,14 @@ class DashboardPage extends Component {
         newUser[name] = value;
         this.setState( { user: newUser });
     }
-    onFileChange = event => {
-        console.log(event.target);
+
+    onUserFormSubmit = event => {
+        event.preventDefault();
+        API.updateUser(this.state.user).then(resp => {
+            if(resp.success) {
+                this.setState({ message: "User updated successfully!" } );
+            }
+        }).catch(err => { console.log(err) } );
     }
     
     onFoodTruckSubmit = event => {
@@ -47,13 +53,12 @@ class DashboardPage extends Component {
         console.log(this.state.user);
     }
 
-    onUserFormSubmit = event => {
+    toggleFoodtruck = event => {
         event.preventDefault();
-        API.updateUser(this.state.user).then(resp => {
-            if(resp.success) {
-                this.setState({ message: "User updated successfully!" } );
-            }
-        }).catch(err => { console.log(err) } );
+        const user = this.state.user;
+        user.foodTrucks[0].isOpen = !user.foodTrucks[0].isOpen;
+        this.setState({ user: user });
+        this.onUserFormSubmit(event);
     }
 
     render() {
@@ -67,7 +72,8 @@ class DashboardPage extends Component {
                         foodTruck={ this.state.user.foodTrucks[0] }
                         fileChange={this.onFileChange }  
                         onChange={ this.onFoodTruckChange } 
-                        onSubmit={ this.onFoodTruckSubmit } />
+                        onSubmit={ this.onFoodTruckSubmit } 
+                        toggleFoodtruck={ this.toggleFoodtruck } />
                     <UserInfoForm 
                         user={this.state.user} 
                         onChange={ this.onUserFormChange } 
