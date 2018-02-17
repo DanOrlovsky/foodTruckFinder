@@ -27,7 +27,9 @@ app.use(morgan('dev'));
 
 // Setup passport
 const loginStrategy = require('./passport/localLogin');
+const authMiddleware = require('./passport/authCheck');
 passport.use('local-login', loginStrategy);
+app.use('/api', authMiddleware);
 
 
 // DB Setup

@@ -8,7 +8,8 @@ class DashboardPage extends Component {
     state = {
         message: {},
         errors: {},
-        user: {},
+        imageFile: null,
+        user: { },
     }
 
     componentDidMount() {
@@ -23,10 +24,17 @@ class DashboardPage extends Component {
         newUser[name] = value;
         this.setState( { user: newUser });
     }
+    onFileChange = event => {
+        console.log(event.target);
+    }
     onFoodTruckSubmit = event => {
         event.preventDefault();
-        console.log(event);
+        let image = document.getElementById("foodTruckImage");
+        if('files' in image) {
+            console.log("Files!");
+        }
     }
+
     onFoodTruckChange = event => {
         const { name, value } = event.target;
         const user = this.state.user;
@@ -34,12 +42,14 @@ class DashboardPage extends Component {
         this.setState({ user: user });
         console.log(this.state.user);
     }
+
     onUserFormSubmit = event => {
-        API.updateUser(this.state.user).then(resp => {
+        event.preventDefault();
+        API.updateUser(this.state.user, localStorage.getItem('token')).then(resp => {
             if(resp.success) {
                 this.setState({ message: "User updated successfully!" } );
             }
-        }).catch(err => console.log(err));
+        }).catch(err => { console.log(err) } );
     }
 
     render() {
@@ -50,7 +60,8 @@ class DashboardPage extends Component {
             page = 
                 <div>
                     <FoodTruckForm 
-                        foodTruck={ this.state.user.foodTrucks[0] } 
+                        foodTruck={ this.state.user.foodTrucks[0] }
+                        fileChange={this.onFileChange }  
                         onChange={ this.onFoodTruckChange } 
                         onSubmit={ this.onFoodTruckSubmit } />
                     <UserInfoForm 

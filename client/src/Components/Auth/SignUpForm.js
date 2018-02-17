@@ -12,7 +12,7 @@ const SignUpForm = ({ message, onSubmit, onChange, errors, user }) => (
       <h2>Signup Form</h2>
       <FormGroup>
         <Label for="userEmail">Email</Label>
-        <Input type="email" name="email" onChange={ onChange } id="email" placeholder="foodtruckfinder@gmail.com" />
+        <Input type="email" name="email" onChange={ onChange } id="email"  placeholder="foodtruckfinder@gmail.com" />
         { errors.email ? <label className="badge badge-danger">{errors.email }</label> : "" }
       </FormGroup>
       <FormGroup>

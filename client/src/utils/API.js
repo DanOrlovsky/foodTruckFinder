@@ -20,7 +20,7 @@ export default {
         if(!dist) return axios.get(`/public/getLocalTrucks/${lat}/${lng}`);
         else return axios.get(`/public/getLocalTrucks/${lat}/${lng}/${dist}`);
     },
-    updateUser: (userData) => {
-        return axios.post('/auth/updateUser', userData);
+    updateUser: (userData, token) => {
+        return axios.post('/api/updateUser', { userData: userData, token: token });
     }
 }
