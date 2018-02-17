@@ -1,5 +1,15 @@
+/* font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Slab', serif;
+font-family: 'Roboto Mono', monospace;
+font-family: 'Quattrocento Sans', sans-serif; 
+font-family: 'Alegreya', serif;*/
+
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+  height: 100%;
 }
 
 @font-face {
@@ -14,13 +24,18 @@ body {
     margin: 0;
     font-size: 16px;
     text-decoration: none;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .body-base {
     /* background-color: red; */
     /* background-image: url("Untitled-1.png"); */
     background-size: 100%;
-    height: 100%;
+    /* height: 100%; */
+    flex: 1 0 auto;
+    color: #741012;
   }
   
   .top-bar a {
@@ -61,7 +76,6 @@ body {
 
   .top-bar-middle {
     justify-content: center;
-    
   }
   
   .top-bar a,
@@ -69,18 +83,28 @@ body {
     text-decoration: none;
     }
   
-  /*.container {
-    margin: 0 auto;
-    text-align: center;
-    width: 700px;
-  }*/
-  
   .card-heading {
     padding: 16px;
   }
   
   .field-line, .button-line {
     padding: 16px;
+  }
+
+  .map button {
+    color: #741012;
+    background-color:white;
+    border-radius: 3px;
+    padding: 5px 50px;
+    margin-left: 30%;
+    margin-bottom: 5%;
+    margin-top: 2%;
+  }
+
+  .map button:hover {
+    background-color: #741012;
+    color: white;
+    cursor: pointer;
   }
   
   .error-message {
@@ -141,3 +165,22 @@ body {
   h2 {
     font-family: 'yonkyblack_italic' !important;
   }
+  .footer-copyright {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    margin-top: 10px;
+    color:#741012;
+    font-weight: bold;
+    background-color: #F4BC19;
+  }
+
+
+ 
+  
+
+
+ 
+  
