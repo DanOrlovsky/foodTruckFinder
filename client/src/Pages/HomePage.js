@@ -7,7 +7,7 @@ class HomePage extends  Component {
         return(
             <Row>
                 <Col md={{ size: 6, offset: 3 }} sm="12">
-                    <h2>Local Food Trucks</h2>
+                    <h1>Local Food Trucks</h1>
                     <FoodTruckMapComponent />
                 </Col>
             </Row>
