@@ -73,7 +73,7 @@ class FoodTruckMapComponent extends Component {
                 { 
                   this.state.foodTrucks.length > 0 ? 
                   this.state.foodTrucks.map((current, index) => 
-                    <Marker position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } options={{icon: 'images/marker.png'}}>
+                    <Marker position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } options={{icon: 'ImagesC/TruckIcon.png'}}>
                       <InfoWindow>
                         <div>{ current.name }</div>
                       </InfoWindow>   
