@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import UserInfoForm from '../Components/Auth/UserInfoForm';
 import FoodTruckForm from '../Components/Auth/FoodTruckForm';
 
+
+
 class DashboardPage extends Component {
     state = {
         message: {},
@@ -11,8 +13,9 @@ class DashboardPage extends Component {
         imageFile: null,
         user: { },
     }
-
+    
     componentDidMount() {
+        
         API.getUserFromToken().then(user => {
             this.setState({user: user.data });
         });
@@ -27,10 +30,13 @@ class DashboardPage extends Component {
     onFileChange = event => {
         console.log(event.target);
     }
+    
     onFoodTruckSubmit = event => {
         event.preventDefault();
         let image = document.getElementById("foodTruckImage");
-        
+        API.addImage(this.state.user.foodTrucks[0]._id, image.files[0]).then(resp => {
+            console.log(resp);
+        }).catch(err => console.log(err));
     }
 
     onFoodTruckChange = event => {
@@ -43,7 +49,7 @@ class DashboardPage extends Component {
 
     onUserFormSubmit = event => {
         event.preventDefault();
-        API.updateUser(this.state.user, localStorage.getItem('token')).then(resp => {
+        API.updateUser(this.state.user).then(resp => {
             if(resp.success) {
                 this.setState({ message: "User updated successfully!" } );
             }
