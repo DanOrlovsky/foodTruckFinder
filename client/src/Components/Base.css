@@ -1,5 +1,14 @@
+@font-face {
+  font-family: 'yonkyblack_italic';
+  src: url('/font/webfontkit-20180217-115850/yonky-black-italic-demoffp-webfont.woff2') format('woff2'),
+       url('/font/webfontkit-20180217-115850/yonky-black-italic-demoffp-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'yonkyblack_italic, Arial, Helvetica, sans-serif';
 }
 
 body {
@@ -96,15 +105,13 @@ body {
   }
 
   .logobox {
-    width: 50px;
+    width: 65px;
     padding: 0.5rem;
   }
 
   .logobox_Words {
     width: 150px;
  }
-
-
 
   #signUpForm {
     margin: 0 auto;
@@ -134,4 +141,9 @@ body {
   .go2SignUp h4 {
     font-size: 14px;
     padding-top: 15px;
+  }
+
+  h2 {
+    font-family: 'yonkyblack_italic' !important;
+    color:#741012 !important;
   }
