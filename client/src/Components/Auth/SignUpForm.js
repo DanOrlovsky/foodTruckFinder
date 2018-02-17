@@ -12,8 +12,8 @@ const SignUpForm = ({ message, onSubmit, onChange, errors, user }) => (
       <h2>Signup Form</h2>
       <FormGroup>
         <Label for="userEmail">Email</Label>
-        <Input type="email" name="email" onChange={ onChange } id="email" placeholder="foodtruckfinder@gmail.com" />
-        { errors.emailAlreadyExists ? <label className="badge badge-danger">{errors.emailAlreadyExists }</label> : "" }
+        <Input type="email" name="email" onChange={ onChange } id="email"  placeholder="foodtruckfinder@gmail.com" />
+        { errors.email ? <label className="badge badge-danger">{errors.email }</label> : "" }
       </FormGroup>
       <FormGroup>
         <Label for="userZipcode">Zipcode</Label>
@@ -25,7 +25,7 @@ const SignUpForm = ({ message, onSubmit, onChange, errors, user }) => (
       </FormGroup>
       <FormGroup>
         <Label for="verifyPassword">Verify Password</Label>
-        <Input type="password" name="comparePassword" onChange={ onChange } id="verifyPassword" placeholder="Shhhh! Don't Tell Anyone!" />
+        <Input type="password" name="comparePassword" onChange={ onChange } id="verifyPassword" placeholder="One more time with feeling..." />
         { errors.comparePasswordError ? <label className="badge badge-danger">{errors.comparePasswordError }</label> : "" }
       </FormGroup>
       <FormGroup check>

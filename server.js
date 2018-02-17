@@ -1,3 +1,8 @@
+// ----------------------------------------------------
+// --- S E R V E R . J S ------------------------------
+// ----------------------------------------------------
+
+
 'use strict';
 
 const express = require("express");
@@ -17,26 +22,27 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-
+// Log commands
 app.use(morgan('dev'));
 
-
-const signupStrategy = require('./passport/localSignup');
+// Setup passport
 const loginStrategy = require('./passport/localLogin');
-passport.use('local-signup', signupStrategy);
+const authMiddleware = require('./passport/authCheck');
 passport.use('local-login', loginStrategy);
+app.use('/api', authMiddleware);
 
-/*const authMiddleware = require('./passport/authCheck');
-app.use('/api', authMiddleware);*/
 
 // DB Setup
 const db = process.env.MONGO_DB || setup.db.uri;
 require('./db/mongoose')(db);
 
 
+// Include routes
 const authRoutes = require('./routes/authRoutes');
 const apiRoutes = require('./routes/apiRoutes');
 const publicRoutes = require('./routes/publicRoutes');
+
+// Setup routes
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 app.use('/public', publicRoutes);

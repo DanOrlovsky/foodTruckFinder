@@ -31,6 +31,11 @@ class Base extends Component {
                     </div>
                 </div>
                 { this.props.children }
+                <div className="footer-copyright">
+                    <div className="container text-center">
+                       © 2018 Copyright: OMG CAN WE BE SERIOUS.
+                    </div>
+                </div>
             </div>
         )
     };

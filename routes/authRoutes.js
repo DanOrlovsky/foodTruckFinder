@@ -73,11 +73,21 @@ router.post('/signup', (req, res, next) => {
             errors: validationResult.errors,
         });
     }
-    return passport.authenticate("local-signup", (err, token) => {
+    const userData = {
+        email: req.body.email.trim(),
+        password: req.body.password.trim(),
+        isFoodTruck: req.body.isFoodTruck,
+        role: req.body.isFoodTruck ? "Foodtruck" : "User",
+        zipCode: req.body.zipCode,        
+    };
+
+    const newUser = new User(userData);
+    newUser.save((err) => {
         if(err) {
-            // Check if email is already being used.
-            if(err.name === 'MongoError' && err.code === 11000) {
-                return res.status(400).json({
+            console.log(err);
+            // 11000 is a duplicate key error.
+            if(err.code === 11000) {
+                return res.json({
                     success: false,
                     message: "Check the form for errors",
                     errors : {
@@ -91,7 +101,11 @@ router.post('/signup', (req, res, next) => {
                 message: "Could not process the form",
             });
         }
-        console.log(token);
+        const payload = {
+            sub: newUser._id,
+        }
+
+        const token = jwt.sign(payload, config.jwtSecret);
         return res.status(200).json({
             success: true,
             token,
@@ -149,4 +163,13 @@ router.post("/dataFromToken", (req, res, next) => {
     });
 })
 
+router.post("/updateUser", (req, res) => {
+    const userToUpdate = new User(req.body);
+    User.replaceOne({"_id": req.body.id }, userToUpdate).then(userUpdated => {
+        console.log(userUpdated);
+        return res.json({
+            success: true,
+        })
+    }).catch(err => { console.log(err); return res.json(err)})
+})
 module.exports = router;
