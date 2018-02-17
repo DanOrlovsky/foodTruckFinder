@@ -30,9 +30,7 @@ class DashboardPage extends Component {
     onFoodTruckSubmit = event => {
         event.preventDefault();
         let image = document.getElementById("foodTruckImage");
-        if('files' in image) {
-            console.log("Files!");
-        }
+        
     }
 
     onFoodTruckChange = event => {
