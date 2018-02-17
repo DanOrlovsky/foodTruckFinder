@@ -5,6 +5,8 @@
 
 'use strict';
 
+
+// INCLUDES
 const express = require("express");
 const path = require("path");
 const morgan = require('morgan');
@@ -13,6 +15,8 @@ const setup = require('./config').init();
 const app = express();
 const passport = require('passport');
 const User = require('./db/models/user');
+
+// Setup body parser
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -29,6 +33,8 @@ app.use(morgan('dev'));
 const loginStrategy = require('./passport/localLogin');
 const authMiddleware = require('./passport/authCheck');
 passport.use('local-login', loginStrategy);
+
+// Protect api routes
 app.use('/api', authMiddleware);
 
 

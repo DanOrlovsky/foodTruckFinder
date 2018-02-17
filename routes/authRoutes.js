@@ -10,9 +10,13 @@ const User = require('../db/models/user');
 const jwt = require('jsonwebtoken');
 const config = require('../config').init();
 
-const validateSignupForm = payload => {
+//  func: validateSignupForm
+//  params: formVals
+//  description: 
+//      Ensures the form data passed from the signup form is valid.
+const validateSignupForm = formVals => {
     const errors = {};
-    const { email, password, zipCode } = payload;
+    const { email, password, zipCode } = formVals;
     let isFormValid = true;
     let message = '';
 
@@ -40,8 +44,12 @@ const validateSignupForm = payload => {
     };
 }
 
-const validateLoginForm = payload => {
-    const { email, password } = payload;
+//  func: validateLoginForm
+//  params: formVals
+//  description: 
+//      Ensures the form data passed from the login form is valid.
+const validateLoginForm = formVals => {
+    const { email, password } = formVals;
     let isFormValid = true;
     errors = {};
     message = "";
@@ -62,10 +70,13 @@ const validateLoginForm = payload => {
         errors,
     }
 }
-
+//  route: /signUp
+//  
+//  description: 
+//      Creates a new user.
 router.post('/signup', (req, res, next) => {
+    // checks if the signup form is valid
     const validationResult = validateSignupForm(req.body);
-    console.log(req.body);
     if(!validationResult.success) {
         return res.json({
             success: false,
@@ -73,6 +84,7 @@ router.post('/signup', (req, res, next) => {
             errors: validationResult.errors,
         });
     }
+    // Build a user object
     const userData = {
         email: req.body.email.trim(),
         password: req.body.password.trim(),
@@ -80,11 +92,10 @@ router.post('/signup', (req, res, next) => {
         role: req.body.isFoodTruck ? "Foodtruck" : "User",
         zipCode: req.body.zipCode,        
     };
-
+    // Turn it into a mongo object
     const newUser = new User(userData);
     newUser.save((err) => {
         if(err) {
-            console.log(err);
             // 11000 is a duplicate key error.
             if(err.code === 11000) {
                 return res.json({
@@ -113,6 +124,10 @@ router.post('/signup', (req, res, next) => {
     })
 });
 
+//  route: /login
+//  
+//  description: 
+//      Checks if a user exists in a database and passes the object back.
 router.post('/login', (req, res, next) => {
     const validationResult = validateLoginForm(req.body);
     if(!validationResult.success) {
@@ -123,16 +138,13 @@ router.post('/login', (req, res, next) => {
         }); 
     }
     return passport.authenticate("local-login", (err, token, userData) => {
-
         if(err) {
-            
             if(err.name === 'IncorrectCredentialsError') {
                 return res.json({
                     success: false,
                     message: err.message,
                 })
             }
-            
             return res.json({
                 success: false,
                 message: "We could not log you in.",
@@ -147,10 +159,14 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 });
 
+
+//  route: /dataFromToken
+//  
+//  description: 
+//      Gets a user object from token data
 router.post("/dataFromToken", (req, res, next) => {
     if(!req.body.token) return res.status(401).end();    
     const token = req.body.token;
-
     return jwt.verify(token, config.jwtSecret, (err, decoded) => {
         if(err) return res.status(401).end();
         const userId = decoded.sub;
@@ -163,13 +179,5 @@ router.post("/dataFromToken", (req, res, next) => {
     });
 })
 
-router.post("/updateUser", (req, res) => {
-    const userToUpdate = new User(req.body);
-    User.replaceOne({"_id": req.body.id }, userToUpdate).then(userUpdated => {
-        console.log(userUpdated);
-        return res.json({
-            success: true,
-        })
-    }).catch(err => { console.log(err); return res.json(err)})
-})
+
 module.exports = router;
