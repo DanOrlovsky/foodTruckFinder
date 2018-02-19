@@ -3,6 +3,10 @@ import API from '../utils/API';
 import { Link } from 'react-router-dom';
 import UserInfoForm from '../Components/Auth/UserInfoForm';
 import FoodTruckForm from '../Components/Auth/FoodTruckForm';
+import request from 'superagent';
+import '../Components/Base.css';
+const UPLOAD_PRESET = 'icwuha7h';
+const UPLOAD_URL = 'https://api.cloudinary.com/v1_1/food-truck-finder/upload';
 
 
 
@@ -29,23 +33,35 @@ class DashboardPage extends Component {
     }
 
     onUserFormSubmit = event => {
-        event.preventDefault();
+        if(event) event.preventDefault();
         API.updateUser(this.state.user).then(resp => {
             if(resp.success) {
                 this.setState({ message: "User updated successfully!" } );
             }
         }).catch(err => { console.log(err) } );
     }
-    
-    onFoodTruckSubmit = event => {
-        event.preventDefault();
-        let image = document.getElementById("foodTruckImage");
-        API.addImage(this.state.user.foodTrucks[0]._id, image.files[0]).then(resp => {
-            console.log(resp);
-        }).catch(err => console.log(err));
-    }
 
-    onFoodTruckChange = event => {
+    onImageDrop = files => {
+        const user = this.state.user;
+        //user.foodTrucks[0].imageUrl = files[0];
+        let upload = request.post(UPLOAD_URL)
+            .field("upload_preset", UPLOAD_PRESET)
+            .field("file", files[0]);
+
+        upload.end((err, resp) => {
+            if(err) return console.log(err);
+
+            if(resp.body.secure_url !== '') {
+                user.foodTrucks[0].imageUrl = resp.body.secure_url;
+                this.setState({ user: user });
+                this.onUserFormSubmit();
+            }
+        })
+        //this.setState({ user: user });
+
+    }
+    
+    onFoodTruckChange = event => { 
         const { name, value } = event.target;
         const user = this.state.user;
         user.foodTrucks[0][name] = value;
@@ -70,9 +86,9 @@ class DashboardPage extends Component {
                 <div>
                     <FoodTruckForm 
                         foodTruck={ this.state.user.foodTrucks[0] }
-                        fileChange={this.onFileChange }  
                         onChange={ this.onFoodTruckChange } 
-                        onSubmit={ this.onFoodTruckSubmit } 
+                        onSubmit={ this.onUserFormSubmit } 
+                        onImageDrop={ this.onImageDrop }
                         toggleFoodtruck={ this.toggleFoodtruck } />
                     <UserInfoForm 
                         user={this.state.user} 
