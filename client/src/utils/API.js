@@ -23,10 +23,8 @@ export default {
     updateUser: (userData) => {
         return axios.post('/api/updateUser', { userData: userData, token: localStorage.getItem('token') });
     },
-    addImage: (id, image) => {
-        return new Promise((resolve, reject) => {
-            if(!image) resolve();
-            resolve(axios.post('/api/addImage', { token: localStorage.getItem('token'), id: id, imageFile: image }));
-        })
+    addImage: (/*id, image*/data) => {
+        return axios.post('/api/addImage', { token: localStorage.getItem('token'), data });
+        //return axios.post('/api/addImage', { token: localStorage.getItem('token'), id: id, imageFile: image })
     }
 }

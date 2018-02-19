@@ -15,12 +15,12 @@ const setup = require('./config').init();
 const app = express();
 const passport = require('passport');
 const User = require('./db/models/user');
+const busboy = require('connect-busboy');
 
+app.use(busboy());
 // Setup body parser
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-
-
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

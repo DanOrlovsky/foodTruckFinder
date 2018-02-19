@@ -21,6 +21,9 @@
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
+    "busboy": "^0.2.14",
+    "cloudinary": "^1.10.0",
+    "connect-busboy": "0.0.2",
     "express": "^4.15.4",
     "jsonwebtoken": "^8.1.1",
     "mongoose": "^5.0.2",
@@ -31,6 +34,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "reactstrap": "^5.0.0-beta",
+    "uuid": "^3.2.1",
     "validator": "^9.3.0"
   },
   "repository": {
