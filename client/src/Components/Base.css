@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 @font-face {
   font-family: 'yonkyblack_italic';
@@ -31,6 +32,10 @@ html, body {
        url('/font/yonky-italic/yonky-black-italic-demoffp-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+=======
+* {
+  font-family: Arial, Helvetica, sans-serif;
+>>>>>>> parent of a929f93... NavBar Aligned, Font Added, Proper Color Added
 }
 
 body {
@@ -135,16 +140,22 @@ body {
 
   .logobox {
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 75px;
 =======
     width: 65px;
 >>>>>>> d322d9f1edfca70f800ad485d242ca6e1305f3c3
+=======
+    width: 50px;
+>>>>>>> parent of a929f93... NavBar Aligned, Font Added, Proper Color Added
     padding: 0.5rem;
   }
 
   .logobox_Words {
     width: 150px;
  }
+
+
 
   #signUpForm {
     margin: 0 auto;
@@ -175,6 +186,7 @@ body {
     font-size: 14px;
     padding-top: 15px;
   }
+<<<<<<< HEAD
 
   h2 {
     font-family: 'yonkyblack_italic' !important;
@@ -196,3 +208,5 @@ body {
     font-weight: bold;
     background-color: #F4BC19;
   }
+=======
+>>>>>>> parent of a929f93... NavBar Aligned, Font Added, Proper Color Added
