@@ -57,11 +57,15 @@ class FoodTruckMapComponent extends Component {
         this.props.coords ? 
         <div className="map">
             <Form onSubmit={ this.processForm } inline>
-              <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                <Label for="distance" className="mr-sm-0"><h2>Distance</h2> </Label>
+            <div className="mx-auto">
+              <FormGroup className="map">
+                <Label for="distance" className="mr-sm-0"><h2>Distance: </h2> </Label>
                 <Input value={ this.state.distance } name="distance" onChange={ this.onChange } type="text" />
               </FormGroup>
+              <div className="button mx-auto">
               <Button>Submit</Button>
+              </div>
+              </div>
             </Form>
             <FoodTruckMap 
               defaultCenter={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }}

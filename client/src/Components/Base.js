@@ -31,7 +31,7 @@ class Base extends Component {
                 { this.props.children }
                 <div className="footer-copyright">
                     <div className="container text-center">
-                       © 2018 Copyright: OMG CAN WE BE SERIOUS.
+                       © 2018 Copyright Food Truck Finder Inc.
                     </div>
                 </div>
             </div>
