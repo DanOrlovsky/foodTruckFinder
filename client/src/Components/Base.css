@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 @font-face {
   font-family: 'yonkyblack_italic';
@@ -11,7 +10,7 @@
 
 * {
   font-family: 'yonkyblack_italic, Arial, Helvetica, sans-serif';
-
+}
 /* font-family: 'Roboto', sans-serif;
 font-family: 'Roboto Slab', serif;
 font-family: 'Roboto Mono', monospace;
@@ -23,20 +22,11 @@ font-family: 'Alegreya', serif;
 }
 
 html, body {
-  height: 100%;*/
-}
+  height: 100%;
+}*/
 
-@font-face {
-  font-family: 'yonkyblack_italic';
-  src: url('/font/yonky-italic/yonky-black-italic-demoffp-webfont.woff2') format('woff2'),
-       url('/font/yonky-italic/yonky-black-italic-demoffp-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-=======
-* {
-  font-family: Arial, Helvetica, sans-serif;
->>>>>>> parent of a929f93... NavBar Aligned, Font Added, Proper Color Added
-}
+
+
 
 body {
     margin: 0;
@@ -139,23 +129,13 @@ body {
   }
 
   .logobox {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    width: 75px;
-=======
     width: 65px;
->>>>>>> d322d9f1edfca70f800ad485d242ca6e1305f3c3
-=======
-    width: 50px;
->>>>>>> parent of a929f93... NavBar Aligned, Font Added, Proper Color Added
     padding: 0.5rem;
   }
 
   .logobox_Words {
     width: 150px;
  }
-
-
 
   #signUpForm {
     margin: 0 auto;
@@ -186,17 +166,12 @@ body {
     font-size: 14px;
     padding-top: 15px;
   }
-<<<<<<< HEAD
 
   h2 {
     font-family: 'yonkyblack_italic' !important;
-<<<<<<< HEAD
-  }
-=======
     color:#741012 !important;
   }
 
->>>>>>> d322d9f1edfca70f800ad485d242ca6e1305f3c3
   .footer-copyright {
     position: fixed;
     bottom: 0;
@@ -208,5 +183,3 @@ body {
     font-weight: bold;
     background-color: #F4BC19;
   }
-=======
->>>>>>> parent of a929f93... NavBar Aligned, Font Added, Proper Color Added
