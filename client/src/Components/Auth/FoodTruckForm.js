@@ -21,7 +21,7 @@ const FoodTruckForm = props => (
     }
         <Row>
             <Col lg={{ size: "8", offset: "2" }} md={{ size: "8", offset: "2" }} sm={12}>
-                <h2>Food Truck Info</h2>
+                <h1 class="heading-title">Food Truck Info</h1>
                 <h5>Image</h5>
                 { props.foodTruck.imageUrl ? <img src={ props.foodTruck.imageUrl } className="food-truck-image"  alt="Food truck" /> : "" }    
                 <Dropzone
