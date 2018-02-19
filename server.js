@@ -15,9 +15,7 @@ const setup = require('./config').init();
 const app = express();
 const passport = require('passport');
 const User = require('./db/models/user');
-const busboy = require('connect-busboy');
 
-app.use(busboy());
 // Setup body parser
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

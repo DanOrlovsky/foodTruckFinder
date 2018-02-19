@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import UserInfoForm from '../Components/Auth/UserInfoForm';
 import FoodTruckForm from '../Components/Auth/FoodTruckForm';
 import request from 'superagent';
-import '../Components/Base.css';
+import { geolocated } from 'react-geolocated';
 const UPLOAD_PRESET = 'icwuha7h';
 const UPLOAD_URL = 'https://api.cloudinary.com/v1_1/food-truck-finder/upload';
 
@@ -73,6 +73,7 @@ class DashboardPage extends Component {
         event.preventDefault();
         const user = this.state.user;
         user.foodTrucks[0].isOpen = !user.foodTrucks[0].isOpen;
+        user.foodTrucks[0].loc = [this.props.coords.longitude, this.props.coords.latitude ];
         this.setState({ user: user });
         this.onUserFormSubmit(event);
     }
@@ -84,12 +85,21 @@ class DashboardPage extends Component {
         } else if(this.state.user.role === "Foodtruck") {
             page = 
                 <div>
-                    <FoodTruckForm 
-                        foodTruck={ this.state.user.foodTrucks[0] }
-                        onChange={ this.onFoodTruckChange } 
-                        onSubmit={ this.onUserFormSubmit } 
-                        onImageDrop={ this.onImageDrop }
-                        toggleFoodtruck={ this.toggleFoodtruck } />
+                    { this.props.isGeolocationAvailable ? (
+                        this.props.coords ? (
+                            <FoodTruckForm 
+                            foodTruck={ this.state.user.foodTrucks[0] }
+                            onChange={ this.onFoodTruckChange } 
+                            onSubmit={ this.onUserFormSubmit } 
+                            onImageDrop={ this.onImageDrop }
+                            toggleFoodtruck={ this.toggleFoodtruck } 
+                            />
+
+                        ) : <h2>Getting your coordinates</h2>
+                    ) : (
+                        <h2>You need to enable Geolocation Services to access foodtruck information</h2>
+                    )}
+                    
                     <UserInfoForm 
                         user={this.state.user} 
                         onChange={ this.onUserFormChange } 
@@ -107,5 +117,10 @@ class DashboardPage extends Component {
     }
 }
 
-export default DashboardPage;
+export default geolocated({ 
+    positionOptions: {
+      enableHighAccuracy: false,
+    }, 
+    userDecisionTimeout: 10000, 
+  })(DashboardPage);
 
