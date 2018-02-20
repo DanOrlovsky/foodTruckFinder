@@ -17,11 +17,9 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.192.0",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
-    "cloudinary": "^1.10.0",
     "express": "^4.15.4",
     "jsonwebtoken": "^8.1.1",
     "mongoose": "^5.0.2",
@@ -31,7 +29,7 @@
     "passport-local": "^1.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "reactstrap": "^5.0.0-beta",
+    "uuid": "^3.2.1",
     "validator": "^9.3.0"
   },
   "repository": {

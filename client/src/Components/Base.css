@@ -179,13 +179,30 @@ body {
   }
 
   .footer-copyright {
-    position: fixed;
+    
     bottom: 0;
     width: 100%;
     height: 60px;
     line-height: 60px;
-    margin-top: 10px;
+    margin-top: 80px;
     color:#741012;
     font-weight: bold;
     background-color: #F4BC19;
   }
+
+  .food-truck-image {
+    max-width: 300px;
+    height: auto;
+  }
+
+  h1.heading-title {
+    font-size: 56px;
+    line-height: 120px;
+    margin-left: -20px;
+  }
+ 
+  
+
+
+ 
+  

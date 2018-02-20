@@ -36,7 +36,11 @@ class FoodTruckMapComponent extends Component {
       this.setState({ foodTrucks: resp.data });      
     })  
   }
-  
+  toggleMapData = index => {
+    const foodTrucks = this.state.foodTrucks;
+    foodTrucks[index].isMapDataOpen = !foodTrucks[index].isMapDataOpen;
+    this.setState({ foodTrucks: foodTrucks });
+  }
   componentWillReceiveProps(nextProps) {
     if(nextProps.coords !== this.props.coords) {
       const coords = {
@@ -44,6 +48,7 @@ class FoodTruckMapComponent extends Component {
         lng: nextProps.coords.longitude,
       }
       API.getLocalTrucks(coords.lat, coords.lng).then(resp => {
+        resp.data.forEach((current) => { current["isMapDataOpen"] = false; });
         this.setState({ foodTrucks: resp.data });
       })
     }
@@ -77,10 +82,15 @@ class FoodTruckMapComponent extends Component {
                 { 
                   this.state.foodTrucks.length > 0 ? 
                   this.state.foodTrucks.map((current, index) => 
-                    <Marker position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } options={{icon: 'ImagesC/TruckIcon.png'}}>
-                      <InfoWindow>
+                    <Marker 
+                        position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } 
+                        options={{icon: 'ImagesC/TruckIcon.png'}}
+                        onClick={ () => { this.toggleMapData(index) }}
+                        >
+
+                      { current.isMapDataOpen && <InfoWindow>
                         <div>{ current.name }</div>
-                      </InfoWindow>   
+                      </InfoWindow> }
                     </Marker>
                   ) : ""
                 }
