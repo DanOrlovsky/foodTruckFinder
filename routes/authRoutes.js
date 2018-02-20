@@ -62,7 +62,7 @@ const validateLoginForm = formVals => {
         isFormValid = false;
         errors.password = "Password must be at least 8 characters in length.";
     }
-    if(!isFormValid) message = "Check the form for errors.";
+    if(!isFormValid) message = "Incorrect Username/Password";
 
     return {
         success: isFormValid,

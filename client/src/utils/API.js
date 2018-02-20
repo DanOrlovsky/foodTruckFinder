@@ -8,6 +8,7 @@ export default {
     },
 
     loginUser: (userData) => {
+        console.log("Login")
         return axios.post('/auth/login', userData);
     },
 

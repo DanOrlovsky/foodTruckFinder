@@ -28,10 +28,12 @@ class Base extends Component {
                             userAuthChanged={this.props.userAuthChanged } />
                     </div>
                 </div>
-                { this.props.children }
+                <div className="container-fluid">
+                    { this.props.children }
+                </div>
                 <div className="footer-copyright">
                     <div className="container text-center">
-                       © 2018 Copyright Food Truck Finder Inc.
+                       © <span className="arial">2018</span> Copyright Food Truck Finder Inc.
                     </div>
                 </div>
             </div>
