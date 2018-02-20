@@ -10,10 +10,11 @@ const userStyles = {
 }
 
 const UserInfoForm = props => (
-    <Container>
+    <Container className="input-form">
         <Row>
             <Col lg={{ size: "8", offset: "2" }} md={{ size: "8", offset: "2" }} sm={12}>
                 <h1 className="heading-title" style={userStyles}>User Info</h1>
+                
                 { props.message && <h2 className="success">{props.message} </h2> }
                 <Form action='/' style={styles} onSubmit={ props.onSubmit }>
                     <FormGroup row>
