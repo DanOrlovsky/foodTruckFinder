@@ -41,6 +41,7 @@ body {
     background-size: 100%;
     flex: 1 0 auto;
     color: #741012;
+    background-image: url("/public/ImagesC/BKGRND/bkgrndhalft_red_low.jpg");
   }
   
   .top-bar a {
@@ -65,7 +66,7 @@ body {
     padding: 10px 15px;
     margin-bottom: 50px;
     background-color: #F4BC19;
-    display: flex; /* or inline-flex */
+    display: flex; 
     flex-direction: row;
     justify-content: space-between;
   }
@@ -167,8 +168,13 @@ body {
     padding-top: 15px;
   }
 
+  h1 {
+    font-family: 'arial' !important;
+    color:#741012 !important;
+  }
+
   h2 {
-    font-family: 'yonkyblack_italic' !important;
+    font-family: 'arial' !important;
     color:#741012 !important;
   }
 
