@@ -1,6 +1,10 @@
 import React from 'react';
 import { Row, Col,Container, Label, Form, FormGroup, Button, Input } from 'reactstrap';
 
+const styles = {
+    marginBottom:120
+}
+
 const UserInfoForm = props => (
     <Container>
         <Row>

@@ -88,9 +88,8 @@ class FoodTruckMapComponent extends Component {
                   this.state.foodTrucks.map((current, index) => 
                     <Marker 
                         position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } 
-                        options={{icon: 'images/marker.png'}}
+                        options={{icon: 'ImagesC/TruckIcon.png'}}
                         onClick={ () => { this.toggleMapData(index) }}>
-
                       { current.isMapDataOpen && <InfoWindow style={infoWindowStyles }>
                         <div>
                           <div className="infowindow-title">{ current.name }</div>
