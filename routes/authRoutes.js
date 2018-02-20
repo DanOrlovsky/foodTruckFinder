@@ -102,6 +102,7 @@ router.post('/signup', (req, res, next) => {
     }
     newUser.save((err) => {
         if(err) {
+            console.log(err);
             // 11000 is a duplicate key error.
             if(err.code === 11000) {
                 return res.json({
