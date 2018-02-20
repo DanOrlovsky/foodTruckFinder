@@ -11,6 +11,10 @@ const dropZoneStyle ={
     padding: "20px"
 }
 
+const truckStyles = {
+    marginLeft:2
+}
+
 const FoodTruckForm = props => (
     
     <Container>
@@ -21,7 +25,7 @@ const FoodTruckForm = props => (
     }
         <Row>
             <Col lg={{ size: "8", offset: "2" }} md={{ size: "8", offset: "2" }} sm={12}>
-                <h1 className="heading-title">Food Truck Info</h1>
+                <h1 className="heading-title" style={truckStyles}>Food Truck Info</h1>
                 { props.message && <h2 className="success">{props.message} </h2> }
                 <h5>Image</h5>
                 { props.foodTruck.imageUrl ? <img src={ props.foodTruck.imageUrl } className="food-truck-image"  alt="Food truck" /> : "" }    
