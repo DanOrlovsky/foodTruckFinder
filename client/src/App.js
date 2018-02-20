@@ -7,7 +7,7 @@ import LoginPage from './Pages/LoginPage';
 import SignUpPage from './Pages/SignUpPage';
 import DashboardPage from './Pages/DashboardPage';
 import Auth from './Modules/Auth';
-
+import HttpsRedirect from 'react-https-redirect';
 injectTapEventPlugin();
 
 class App extends Component {
@@ -24,6 +24,7 @@ class App extends Component {
 
   render() {
     return (
+      <HttpsRedirect>
         <Router>
           <Switch>
             <Base 
@@ -37,7 +38,7 @@ class App extends Component {
             </Base>
           </Switch>
         </Router>
-      
+      </HttpsRedirect>
     );
   }
 }
