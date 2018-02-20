@@ -13,15 +13,13 @@ class Base extends Component {
             <div className='body-base'>
                 <div className='top-bar'>
                     <div className="top-bar-left">
-                        <Link to="/">
-                            <div className='logobox'>
-                                <a href="/"><img src="../ImagesC/FTF-logo_OneColor_Truck.png" width="100%" padding="0.5rem, 0"/></a>
-                            </div> 
-                        </Link>
+                        <div className='logobox'>
+                            <a href="/"><img src="../ImagesC/FTF-logo_OneColor_Truck_Red.png" width="100%" padding="0.5rem, 0"/></a>
+                        </div> 
                     </div>
                         <div className="top-bar-middle">
                             <div className='logobox_Words'>
-                            <a href="/"><img src="../ImagesC/Logo_Word.png" width="100%"/></a>
+                                <a href="/"><img src="../ImagesC/FTF_Logo_Red.png" width="100%"/></a>
                             </div>
                         </div>
                     <div className="top-bar-right">
@@ -30,10 +28,12 @@ class Base extends Component {
                             userAuthChanged={this.props.userAuthChanged } />
                     </div>
                 </div>
-                { this.props.children }
+                <div className="container-fluid">
+                    { this.props.children }
+                </div>
                 <div className="footer-copyright">
                     <div className="container text-center">
-                       © 2018 Copyright Yksvolro Inc.
+                       © <span className="arial">2018</span> Copyright Food Truck Finder Inc.
                     </div>
                 </div>
             </div>

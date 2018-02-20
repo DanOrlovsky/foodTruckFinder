@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Auth from '../../Modules/Auth';
+import { Redirect } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -23,6 +24,7 @@ export default class NavBar extends Component {
     event.preventDefault();
     Auth.deauthenticateUser();
     this.props.userAuthChanged();
+    return ( <Redirect to="/" /> );
   }
 
   toggle() {
@@ -33,11 +35,12 @@ export default class NavBar extends Component {
 
   render() {
     return (
+      
       <Navbar color="faded" light expand="md">
         <NavbarBrand href="/"></NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="ml-auto navbar-push" navbar>
           { this.props.isAuthenticated ? (
             <div>
               <NavItem>

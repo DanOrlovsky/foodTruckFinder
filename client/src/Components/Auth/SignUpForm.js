@@ -1,15 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import '../Base.css';
 
 
 const SignUpForm = ({ message, onSubmit, onChange, errors, user }) => (
-  <div id="signUpForm">
+  
+  <div id="signUpForm" className="input-form">
     { message !== "" ? <label className="badge badge-warning">{ message }</label> : "" }
+    <h1 className="heading-title">Signup Form</h1>
     <Form action='/' onSubmit={ onSubmit } >
-      <h2>Signup Form</h2>
       <FormGroup>
         <Label for="userEmail">Email</Label>
         <Input type="email" name="email" onChange={ onChange } id="email"  placeholder="foodtruckfinder@gmail.com" />
@@ -22,6 +22,7 @@ const SignUpForm = ({ message, onSubmit, onChange, errors, user }) => (
       <FormGroup>
         <Label for="userPassword">Password</Label>
         <Input type="password" name="password" onChange={ onChange } id="password" placeholder="Shhhh! Don't Tell Anyone!" />
+        { errors.password !== "" ? <label className="badge badge-warning">{ errors.password }</label> : "" }        
       </FormGroup>
       <FormGroup>
         <Label for="verifyPassword">Verify Password</Label>

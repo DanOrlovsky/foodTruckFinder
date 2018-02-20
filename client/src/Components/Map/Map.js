@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { geolocated } from 'react-geolocated';
+
 import { Label, Form, Row, Col, FormGroup, Button, Input } from 'reactstrap';
 import API from '../../utils/API';
 import {
@@ -8,6 +9,11 @@ import {
   Marker,
   InfoWindow,
 } from "react-google-maps";
+
+
+const infoWindowStyles = {
+  width: "450px",
+}
 
 const FoodTruckMap = withGoogleMap((props) => 
   <GoogleMap defaultZoom={ props.zoom } { ...props }>
@@ -36,7 +42,11 @@ class FoodTruckMapComponent extends Component {
       this.setState({ foodTrucks: resp.data });      
     })  
   }
-  
+  toggleMapData = index => {
+    const foodTrucks = this.state.foodTrucks;
+    foodTrucks[index].isMapDataOpen = !foodTrucks[index].isMapDataOpen;
+    this.setState({ foodTrucks: foodTrucks });
+  }
   componentWillReceiveProps(nextProps) {
     if(nextProps.coords !== this.props.coords) {
       const coords = {
@@ -44,6 +54,7 @@ class FoodTruckMapComponent extends Component {
         lng: nextProps.coords.longitude,
       }
       API.getLocalTrucks(coords.lat, coords.lng).then(resp => {
+        resp.data.forEach((current) => { current["isMapDataOpen"] = false; });
         this.setState({ foodTrucks: resp.data });
       })
     }
@@ -56,16 +67,14 @@ class FoodTruckMapComponent extends Component {
         <h2>Please enable Location services</h2> :
         this.props.coords ? 
         <div className="map">
-            <Form onSubmit={ this.processForm } inline>
-            <div className="mx-auto">
-              <FormGroup className="map">
-                <Label for="distance" className="mr-sm-0"><h2>Distance: </h2> </Label>
+            <Form onSubmit={ this.processForm } className="form-inline">
+              <div className="form-group mb-2">
+                <Label for="distance" className="float-left"><h4>Search Radius (miles) : </h4></Label>
+              </div>
+              <div className="form-group mx-sm-3 mb-2">
                 <Input value={ this.state.distance } name="distance" onChange={ this.onChange } type="text" />
-              </FormGroup>
-              <div className="button mx-auto">
-              <Button>Submit</Button>
               </div>
-              </div>
+              <Button className="btn mb-2">Submit</Button>
             </Form>
             <FoodTruckMap 
               defaultCenter={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }}
@@ -77,10 +86,21 @@ class FoodTruckMapComponent extends Component {
                 { 
                   this.state.foodTrucks.length > 0 ? 
                   this.state.foodTrucks.map((current, index) => 
-                    <Marker position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } options={{icon: 'images/marker.png'}}>
-                      <InfoWindow>
-                        <div>{ current.name }</div>
-                      </InfoWindow>   
+                    <Marker 
+                        position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } 
+                        options={{icon: 'ImagesC/TruckIcon.png'}}
+                        onClick={ () => { this.toggleMapData(index) }}>
+                      { current.isMapDataOpen && <InfoWindow style={infoWindowStyles }>
+                        <div>
+                          <div className="infowindow-title">{ current.name }</div>
+                          <div className="infowindow-body">
+                            { current.imageUrl && <img src={current.imageUrl} alt={current.name } className="food-truck-display" />}
+                            { current.description && <p><strong>Description: </strong> { current.description }</p> }
+                            { current.cuisine && <p><strong>Cuisine: </strong> { current.cuisine }</p>}
+                            { current.url && <a href={current.url}>Website</a>}
+                          </div>
+                        </div>
+                      </InfoWindow> }
                     </Marker>
                   ) : ""
                 }
