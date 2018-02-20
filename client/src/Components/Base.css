@@ -1,29 +1,21 @@
 
 @font-face {
   font-family: 'yonkyblack_italic';
-  src: url('/font/webfontkit-20180217-115850/yonky-black-italic-demoffp-webfont.woff2') format('woff2'),
-       url('/font/webfontkit-20180217-115850/yonky-black-italic-demoffp-webfont.woff') format('woff');
+  src: url('/font/yonky-italic/yonky-black-italic-demoffp-webfont.woff2') format('woff2'),
+       url('/font/yonky-italic/yonky-black-italic-demoffp-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
 }
 
-* {
-  font-family: 'yonkyblack_italic, Arial, Helvetica, sans-serif';
-}
-/* font-family: 'Roboto', sans-serif;
-font-family: 'Roboto Slab', serif;
-font-family: 'Roboto Mono', monospace;
-font-family: 'Quattrocento Sans', sans-serif; 
-font-family: 'Alegreya', serif;
 
 * {
   font-family: 'Roboto', sans-serif;
 }
 
 html, body {
-  height: 100%;
-}*/
+  height: 100vh;
+}
 
 
 
@@ -41,7 +33,7 @@ body {
     background-size: 100%;
     flex: 1 0 auto;
     color: #741012;
-    background-image: url("/public/ImagesC/BKGRND/bkgrndhalft_red_low.jpg");
+    background-image: url("/ImagesC/BKGRND/bkgrndhalft.jpg");
   }
   
   .top-bar a {
@@ -139,7 +131,7 @@ body {
   }
 
   .logobox_Words {
-    width: 150px;
+    width: 100px;
  }
 
   #signUpForm {
@@ -173,13 +165,13 @@ body {
   }
 
   h1 {
-    font-family: 'arial' !important;
-    color:#741012 !important;
+    font-family: 'yonkyblack_italic';
+    color: white;
   }
 
   h2 {
-    font-family: 'arial' !important;
-    color:#741012 !important;
+    font-family: 'yonkyblack_italic';
+    color: white;
   }
 
   .footer-copyright {
@@ -204,9 +196,3 @@ body {
     line-height: 120px;
     margin-left: -20px;
   }
- 
-  
-
-
- 
-  
