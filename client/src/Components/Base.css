@@ -48,49 +48,18 @@ strong {
   background-color: rgba(244, 188, 25, .6);
 }
   
-  .top-bar a {
-    text-decoration: none;
-    color: #741012;
-    font-weight: bold;
-    transition: color 0.4s;
-    cursor: pointer;
-  }
-  
-  .top-bar a:hover {
-    text-decoration: none;
-    color: #741012;
-    cursor: pointer;
-  }
   
   .text-center {
     text-align: center;
   }
   
-  .top-bar {
-    padding: 10px 15px;
-    margin-bottom: 50px;
-    background-color: #F4BC19;
-    display: flex; 
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  
-  .top-bar-left {
-    justify-content: flex-start;
-    font-size: 1.5em;
-  }
-  
-  .top-bar-right {
-    justify-content: flex-end;
-  }
-
-  .top-bar-middle {
-    justify-content: center;
-  }
   input[type='text'] {
     font-family: Arial;
   }
-  .top-bar a,
+
+  .page-content {
+    padding: 20px 0;
+  }
   .nav a {
     text-decoration: none;
     }
@@ -135,17 +104,25 @@ strong {
     margin: 0 auto;
     cursor: pointer;
   }
-
-  .logobox {
+  nav { 
+    background-color: #F4BC19;
+  }
+  .navbar-brand {
     width: 65px;
     padding: 0.5rem;
   }
 
-  .logobox_Words {
+  .logobox-words {
     width: 100px;
  }
-
-  #signUpForm {
+ .mr-auto {
+   float: right !important;
+ }
+ .navbar-nav {
+  
+   width: 100px;
+ }
+ #signUpForm {
     margin: 0 auto;
     width: 25%;
   }

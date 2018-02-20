@@ -57,14 +57,14 @@ const objStore = [
     },
     {
         email: "cali@email.com",
-        firstName: "California",
-        lastName: "Citchen",
+        firstName: "Roger",
+        lastName: "Federer",
         password: "pa$$word",
         zipCode: 94129,
         role: 'Foodtruck',
         foodTrucks: [
             {
-                name: "Crepes!",
+                name: "Federer's Fries",
                 isOpen: true,
                 loc: ["-122.4836139", "37.7461481"],
                 url: "https://crepes.com",
@@ -80,7 +80,7 @@ const objStore = [
         role: 'Foodtruck',
         foodTrucks: [
             {
-                name: "Stupid stuff!",
+                name: "Nicholas Sage",
                 isOpen: true,
                 loc: ["-88.1075137", "43.057806"],
                 url: "https://milkhouse.com",
