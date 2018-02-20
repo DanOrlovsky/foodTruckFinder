@@ -49,6 +49,7 @@ const objStore = [
         foodTrucks: [
             {
                 name: "Crepes!",
+                isOpen: true,
                 loc: ["-80.8565597", "35.2149205"],
                 url: "https://crepes.com",
             }
@@ -64,6 +65,7 @@ const objStore = [
         foodTrucks: [
             {
                 name: "Crepes!",
+                isOpen: true,
                 loc: ["-122.4836139", "37.7461481"],
                 url: "https://crepes.com",
             }
@@ -79,23 +81,122 @@ const objStore = [
         foodTrucks: [
             {
                 name: "Stupid stuff!",
+                isOpen: true,
                 loc: ["-88.1075137", "43.057806"],
                 url: "https://milkhouse.com",
             }
         ],
     },
     {
-        email: "hickory@email.com",
-        firstName: "Hickory",
-        lastName: "NC",
+        email: "hello@email.com",
+        firstName: "",
+        lastName: "",
         password: "pa$$word",
         zipCode: 28601,
         role: 'Foodtruck',
         foodTrucks: [
             {
-                name: "Stupid stuff!",
-                loc: ["-81.3890396", "35.7312647"],
-                url: "https://hickory.com",
+                name: "",
+                isOpen: true,
+                loc: ["-80.852330", "35.221999"],
+                url: "",
+            }
+        ],
+    },
+
+    {
+        email: "bubba@email.com",
+        firstName: "",
+        lastName: "",
+        password: "pa$$word",
+        zipCode: 28601,
+        role: 'Foodtruck',
+        foodTrucks: [
+            {
+                name: "",
+                isOpen: true,
+                loc: ["-80.852749", "35.211537"],
+                url: "",
+            }
+        ],
+    },
+    {
+        email: "dan@email.com",
+        firstName: "",
+        lastName: "",
+        password: "pa$$word",
+        zipCode: 28601,
+        role: 'Foodtruck',
+        foodTrucks: [
+            {
+                name: "",
+                isOpen: true,
+                loc: ["-80.863271", "35.220156"],
+                url: "",
+            }
+        ],
+    },
+    {
+        email: "travis@email.com",
+        firstName: "",
+        lastName: "",
+        password: "pa$$word",
+        zipCode: 28601,
+        role: 'Foodtruck',
+        foodTrucks: [
+            {
+                name: "",
+                isOpen: true,
+                loc: ["-80.858069", "35.206062"],
+                url: "",
+            }
+        ],
+    },
+    {
+        email: "jordan@email.com",
+        firstName: "",
+        lastName: "",
+        password: "pa$$word",
+        zipCode: 28601,
+        role: 'Foodtruck',
+        foodTrucks: [
+            {
+                name: "",
+                isOpen: true,
+                loc: ["-80.836245", "35.198810"],
+                url: "",
+            }
+        ],
+    },
+    {
+        email: "colin@email.com",
+        firstName: "",
+        lastName: "",
+        password: "pa$$word",
+        zipCode: 28601,
+        role: 'Foodtruck',
+        foodTrucks: [
+            {
+                name: "",
+                isOpen: true,
+                loc: ["-80.860786", "35.201738"],
+                url: "",
+            }
+        ],
+    },
+    {
+        email: "josh@email.com",
+        firstName: "",
+        lastName: "",
+        password: "pa$$word",
+        zipCode: 28601,
+        role: 'Foodtruck',
+        foodTrucks: [
+            {
+                name: "",
+                isOpen: true,
+                loc: ["-80.804989", "35.224467"],
+                url: "",
             }
         ],
     },
