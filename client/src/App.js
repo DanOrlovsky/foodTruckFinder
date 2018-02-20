@@ -7,7 +7,7 @@ import LoginPage from './Pages/LoginPage';
 import SignUpPage from './Pages/SignUpPage';
 import DashboardPage from './Pages/DashboardPage';
 import Auth from './Modules/Auth';
-
+import HttpsRedirect from 'react-https-redirect';
 injectTapEventPlugin();
 
 class App extends Component {
@@ -24,6 +24,7 @@ class App extends Component {
 
   render() {
     return (
+      <HttpsRedirect>
         <Router>
           <Switch>
             <Base 
@@ -32,12 +33,13 @@ class App extends Component {
               <Route exact path='/' component={ HomePage } />
               <Route exact path='/login' render={ ()=> <LoginPage isAuthenticated={this.state.isAuthenticated } 
                                                                   userAuthChanged={this.userAuthChanged }/>} />
-              <Route exact path='/signup' component={SignUpPage} />
+              <Route exact path='/signup' render={ ()=> <SignUpPage isAuthenticated={this.state.isAuthenticated } 
+                                                                    userAuthChanged={this.userAuthChanged } /> } />
               <Route exact path="/dashboard" render={ () => <DashboardPage isAuthenticated={ this.state.isAuthenticated }/> } />
             </Base>
           </Switch>
         </Router>
-      
+      </HttpsRedirect>
     );
   }
 }

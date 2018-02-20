@@ -3,10 +3,13 @@ import {Link} from 'react-router-dom';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import '../Base.css';
 
+const signUpStyles = {
+  marginBottom:60
+}
 
 const SignUpForm = ({ message, onSubmit, onChange, errors, user }) => (
   
-  <div id="signUpForm" className="input-form">
+  <div id="signUpForm" style={signUpStyles} className="input-form">
     { message !== "" ? <label className="badge badge-warning">{ message }</label> : "" }
     <h1 className="heading-title">Signup Form</h1>
     <Form action='/' onSubmit={ onSubmit } >

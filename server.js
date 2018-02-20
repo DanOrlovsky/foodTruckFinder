@@ -37,7 +37,7 @@ app.use('/api', authMiddleware);
 
 
 // DB Setup
-const db = process.env.MONGO_DB || setup.db.uri;
+const db = process.env.MONGODB_URI || setup.db.uri;
 require('./db/mongoose')(db);
 
 
