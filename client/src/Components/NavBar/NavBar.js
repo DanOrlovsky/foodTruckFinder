@@ -37,10 +37,17 @@ export default class NavBar extends Component {
     return (
       
       <Navbar color="faded" light expand="md">
-        <NavbarBrand href="/"></NavbarBrand>
+        <NavbarBrand href="/"><img src="../ImagesC/FTF-logo_OneColor_Truck_Red.png" width="100%" padding="0.5rem, 0"/></NavbarBrand>
+        <Nav>
+          <NavItem className="justify-center">
+            <NavLink href="/">
+              <img src="../ImagesC/FTF_Logo_Red.png" className="logobox-words" width="100%"/>
+            </NavLink>
+          </NavItem>
+        </Nav>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto navbar-push" navbar>
+          <Nav navbar className="mr-auto" >
           { this.props.isAuthenticated ? (
             <div>
               <NavItem>
