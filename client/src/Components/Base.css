@@ -97,6 +97,10 @@ body {
     padding: 16px;
   }
 
+  .map {
+    margin-bottom: 120px;
+  }
+
   .map button {
     color: #741012;
     background-color:white;
@@ -179,7 +183,7 @@ body {
   }
 
   .footer-copyright {
-    
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: 60px;
