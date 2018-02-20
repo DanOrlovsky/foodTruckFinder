@@ -95,8 +95,10 @@ router.post('/signup', (req, res, next) => {
     };
     // Turn it into a mongo object
     const newUser = new User(userData);
+
     if(newUser.role === "Foodtruck") {
-        newUser.foodTrucks.push(new Foodtruck());
+        newUser.foodTrucks.push(new Foodtruck.FoodTruck());
+        console.log(newUser);
     }
     newUser.save((err) => {
         if(err) {

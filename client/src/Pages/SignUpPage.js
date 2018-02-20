@@ -50,6 +50,7 @@ class SignUpPage extends Component
                 return;
             };
             Auth.authenticateUser(resp.data.token);
+            this.props.userAuthChanged();
             this.setState({ isLoggedIn: true });            
         }).catch((err, code) => { 
             console.log(err)
