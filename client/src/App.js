@@ -33,7 +33,8 @@ class App extends Component {
               <Route exact path='/' component={ HomePage } />
               <Route exact path='/login' render={ ()=> <LoginPage isAuthenticated={this.state.isAuthenticated } 
                                                                   userAuthChanged={this.userAuthChanged }/>} />
-              <Route exact path='/signup' component={SignUpPage} />
+              <Route exact path='/signup' render={ ()=> <SignUpPage isAuthenticated={this.state.isAuthenticated } 
+                                                                    userAuthChanged={this.userAuthChanged } /> } />
               <Route exact path="/dashboard" render={ () => <DashboardPage isAuthenticated={ this.state.isAuthenticated }/> } />
             </Base>
           </Switch>
