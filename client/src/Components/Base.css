@@ -26,6 +26,10 @@ body {
     text-decoration: none;
     min-height: 100%;
     font-family: Roboto, Arial, Helvetica, sans-serif;
+    background-image: url("/ImagesC/BKGRND/bkgrndhalft.jpg");
+    background-size: 100%;
+    background-attachment: fixed;
+
 }
 h1, h2, h3, h4 {
   font-family: 'yonkyblack_italic', Arial, Helvetica, sans-serif !important;
@@ -40,11 +44,9 @@ strong {
 }
 
 .body-base {
-    background-size: 100%;
-    flex: 1 0 auto;
-    color: #741012;
-    background-image: url("/ImagesC/BKGRND/bkgrndhalft.jpg");
-  }
+  min-height: 100vh;
+  background-color: rgba(244, 188, 25, .6);
+}
   
   .top-bar a {
     text-decoration: none;
@@ -197,21 +199,42 @@ strong {
 
   .food-truck-image {
     max-width: 300px;
+    border: 5px solid #741012;
     height: auto;
   }
-  
-  h1.heading-title {
-    line-height: 120px;
-    margin-left: -20px;
+  .btn-danger {
+    background-color: #741012 !important;
   }
-  
+  .btn {
+    transition: 500ms all ease-in-out;
+  }
+
+  .btn:hover {
+    color: #741012 !important;
+    background-color: rgba(255, 255, 255, .6) !important;
+  }
+  h1.heading-title {
+    line-height: 80px;
+    margin-left: -20px;
+    border-bottom: 2px solid #741012;
+  }
+  form {
+    margin-top: 20px;
+  }
   .success {
     padding: 10px;
     background-color: green;
     color: white !important;
     border-radius: 10px;
   }
-
+  .input-form {
+    background-color: rgba(255, 255, 255, .8);
+    padding: 50px;
+    border: 3px solid #741012;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 0 0 10px black;
+  }
   .infowindow-title {
     font-size: 22px;
     font-weight: 400;
