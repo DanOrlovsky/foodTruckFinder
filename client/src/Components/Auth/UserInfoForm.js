@@ -9,8 +9,12 @@ const userStyles = {
     marginLeft:2
 }
 
+const containerStyle = {
+    marginBottom:70
+}
+
 const UserInfoForm = props => (
-    <Container className="input-form">
+    <Container className="input-form" style={containerStyle}>
         <Row>
             <Col lg={{ size: "8", offset: "2" }} md={{ size: "8", offset: "2" }} sm={12}>
                 <h1 className="heading-title" style={userStyles}>User Info</h1>
