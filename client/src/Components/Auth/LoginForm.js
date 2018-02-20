@@ -7,6 +7,7 @@ import '../Base.css';
 
 const LoginForm = ({onSubmit, onChange, errors, user}) => (
       <div id="loginForm">
+        { errors.message !== "" ? <label className="badge badge-warning">{ errors.message }</label> : "" }
         <Form action='/' onSubmit={ onSubmit } >
           <FormGroup>
             <Label for="userEmail">Email</Label>

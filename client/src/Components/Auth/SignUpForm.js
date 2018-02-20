@@ -21,6 +21,7 @@ const SignUpForm = ({ message, onSubmit, onChange, errors, user }) => (
       <FormGroup>
         <Label for="userPassword">Password</Label>
         <Input type="password" name="password" onChange={ onChange } id="password" placeholder="Shhhh! Don't Tell Anyone!" />
+        { errors.password !== "" ? <label className="badge badge-warning">{ errors.password }</label> : "" }        
       </FormGroup>
       <FormGroup>
         <Label for="verifyPassword">Verify Password</Label>

@@ -12,7 +12,7 @@ const UPLOAD_URL = 'https://api.cloudinary.com/v1_1/food-truck-finder/upload';
 
 class DashboardPage extends Component {
     state = {
-        message: {},
+        message: "",
         errors: {},
         imageFile: null,
         user: { },
@@ -35,7 +35,7 @@ class DashboardPage extends Component {
     onUserFormSubmit = event => {
         if(event) event.preventDefault();
         API.updateUser(this.state.user).then(resp => {
-            if(resp.success) {
+            if(resp.data.success) {
                 this.setState({ message: "User updated successfully!" } );
             }
         }).catch(err => { console.log(err) } );
@@ -53,12 +53,10 @@ class DashboardPage extends Component {
 
             if(resp.body.secure_url !== '') {
                 user.foodTrucks[0].imageUrl = resp.body.secure_url;
-                this.setState({ user: user });
+                this.setState({ user: user, message: "Image uploaded!" });
                 this.onUserFormSubmit();
             }
         })
-        //this.setState({ user: user });
-
     }
     
     onFoodTruckChange = event => { 
@@ -66,7 +64,6 @@ class DashboardPage extends Component {
         const user = this.state.user;
         user.foodTrucks[0][name] = value;
         this.setState({ user: user });
-        console.log(this.state.user);
     }
 
     toggleFoodtruck = event => {
@@ -80,7 +77,7 @@ class DashboardPage extends Component {
 
     render() {
         let page = null;
-        if(!this.state.user.email) {
+        if(!this.props.isAuthenticated) {
             page = <h2>Please <Link to="/login">log in</Link> to your account.</h2>;
         } else if(this.state.user.role === "Foodtruck") {
             page = 
@@ -93,6 +90,7 @@ class DashboardPage extends Component {
                             onSubmit={ this.onUserFormSubmit } 
                             onImageDrop={ this.onImageDrop }
                             toggleFoodtruck={ this.toggleFoodtruck } 
+                            message={this.state.message}
                             />
 
                         ) : <h2>Getting your coordinates</h2>
@@ -103,14 +101,14 @@ class DashboardPage extends Component {
                     <UserInfoForm 
                         user={this.state.user} 
                         onChange={ this.onUserFormChange } 
-                        onSubmit={ this.onUserFormSubmit} />
+                        onSubmit={ this.onUserFormSubmit}
+                        message={this.state.message } />
                 </div>;
         } else {
             page = <UserInfoForm user={this.state.user} onChange={ this.onUserFormChange } onSubmit={ this.onUserFormSubmit} />;
         }
         return (
             <div>
-                { this.state.message ? ( <h2 className="badge badge-success">{this.message }</h2>) : "" }
                 {page}
             </div>
         );

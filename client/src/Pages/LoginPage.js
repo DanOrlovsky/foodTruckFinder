@@ -18,6 +18,7 @@ class LoginPage extends Component {
     processForm = event => {
         event.preventDefault();
         API.loginUser({ email: this.state.email, password: this.state.password}).then(resp => {
+            console.log(resp);
             if(resp.data.success === false) {
                 if(resp.data.message) {
                     this.setState({ errors: { message: resp.data.message }} );

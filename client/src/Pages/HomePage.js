@@ -6,8 +6,9 @@ class HomePage extends  Component {
     render() {
         return(
             <Row>
-                <Col md={{ size: 6, offset: 3 }} sm="12">
-                    <h1>Local Food Trucks</h1>
+                <Col md={{ size: 10, offset: 1 }} sm="12">
+                    <h1 className="text-center">Local Food Trucks</h1>
+                    <hr />
                     <FoodTruckMapComponent />
                 </Col>
             </Row>
