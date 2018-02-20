@@ -5,13 +5,17 @@ const styles = {
     marginBottom:120
 }
 
+const userStyles = {
+    marginLeft:2
+}
+
 const UserInfoForm = props => (
     <Container>
         <Row>
             <Col lg={{ size: "8", offset: "2" }} md={{ size: "8", offset: "2" }} sm={12}>
-                <h1 className="heading-title">User Info</h1>
+                <h1 className="heading-title" style={userStyles}>User Info</h1>
                 { props.message && <h2 className="success">{props.message} </h2> }
-                <Form action='/' onSubmit={ props.onSubmit }>
+                <Form action='/' style={styles} onSubmit={ props.onSubmit }>
                     <FormGroup row>
                         <Label for="email" className="col-sm-2 control-label">Email</Label>
                         <Col sm={10}>
