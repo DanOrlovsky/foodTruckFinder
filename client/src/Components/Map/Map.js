@@ -69,7 +69,8 @@ class FoodTruckMapComponent extends Component {
             zoom={this.state.zoom }
             mapElement={ <div style={{ height: `100%` }} /> }
           >
-            <Marker position={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }} />
+            <Marker position={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }}
+            options={{icon: 'ImagesC/URHERE.png'}} />
               { this.props.foodTrucks.length > 0 ? 
                   this.props.foodTrucks.map((current, index) => 
                     <Marker 
