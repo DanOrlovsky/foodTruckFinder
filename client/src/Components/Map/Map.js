@@ -30,10 +30,12 @@ const FoodTruckMap = withGoogleMap((props) =>
 
 class FoodTruckMapComponent extends Component {
   state = {
-    zoom: 13
+    zoom: 13,
+    directions: {},
   }
 
   getDirections(lat,lng) {
+    console.log("We're in!");
     const DirectionsService = new google.maps.DirectionsService();
     DirectionsService.route({
       origin: new google.maps.LatLng(this.props.coords.latitude, this.props.coords.longitude),
@@ -95,7 +97,7 @@ class FoodTruckMapComponent extends Component {
                       </Marker>
                     ) : ""
                   }
-                {props.directions && <DirectionsRenderer directions={props.directions} />}
+                { this.state.directions && <DirectionsRenderer directions={ this.state.directions} />}
               </FoodTruckMap>
             </div>
           </div>
