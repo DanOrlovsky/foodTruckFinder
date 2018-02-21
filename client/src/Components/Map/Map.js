@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { geolocated } from 'react-geolocated';
-
 import { Label, Form, Row, Col, FormGroup, Button, Input } from 'reactstrap';
 import API from '../../utils/API';
 import {
@@ -29,7 +27,6 @@ class FoodTruckMapComponent extends Component {
   state = {
     distance: 10,
     zoom: 13,
-    foodTrucks: [],
   }
 
 
@@ -40,62 +37,36 @@ class FoodTruckMapComponent extends Component {
     });
   }
 
-  processForm = event => {
-    event.preventDefault();
-    API.getLocalTrucks(this.props.coords.latitude, this.props.coords.longitude, this.state.distance).then(resp => {
-      this.setState({ foodTrucks: resp.data });      
-    })  
-  }
-  toggleMapData = index => {
-    const foodTrucks = this.state.foodTrucks;
-    foodTrucks[index].isMapDataOpen = !foodTrucks[index].isMapDataOpen;
-    this.setState({ foodTrucks: foodTrucks });
-  }
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.coords !== this.props.coords) {
-      const coords = {
-        lat: nextProps.coords.latitude,
-        lng: nextProps.coords.longitude,
-      }
-      API.getLocalTrucks(coords.lat, coords.lng).then(resp => {
-        resp.data.forEach((current) => { current["isMapDataOpen"] = false; });
-        this.setState({ foodTrucks: resp.data });
-      })
-    }
-  }
 
   render() {
-    return !this.props.isGeolocationAvailable ? 
-      <h2>Your browser needs to support geolocation</h2> : 
-        !this.props.isGeolocationEnabled ? 
-        <h2>Please enable Location services</h2> :
-        this.props.coords ? 
-        <div className="map">
-            <Form onSubmit={ this.processForm } className="form-inline">
-              <div className="form-group mb-2">
-                <Label for="distance" className="float-left"><h4>Search Radius (miles) : </h4></Label>
-              </div>
-              <div className="form-group mx-sm-3 mb-2">
-                <Input value={ this.state.distance } name="distance" onChange={ this.onChange } type="text" />
-              </div>
-              <Button className="btn mb-2">Submit</Button>
-            </Form>
-            <div style={ mapStyles }>
-              <FoodTruckMap 
-                defaultCenter={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }}
-                loadingElement= { <div style={{ height: `100%` }} />} 
-                containerElement= { <div style={{ height: `800px` }} /> }
-                zoom= {this.state.zoom }
-                mapElement= { <div style={{ height: `100%` }} /> }>
-                  <Marker position={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }} />
-                  { 
-                    this.state.foodTrucks.length > 0 ? 
-                    this.state.foodTrucks.map((current, index) => 
-                      <Marker 
-                          position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } 
-                          options={{icon: 'ImagesC/TruckIcon.png'}}
-                          onClick={ () => { this.toggleMapData(index) }}>
-                        { current.isMapDataOpen && <InfoWindow style={infoWindowStyles }>
+    return (
+      <div className="map">
+        <Form onSubmit={ this.props.processForm } className="form-inline">
+          <div className="form-group mb-2">
+            <Label for="distance" className="float-left"><h4>Search Radius (miles) : </h4></Label>
+          </div>
+          <div className="form-group mx-sm-3 mb-2">
+            <Input value={ this.state.distance } name="distance" onChange={ this.onChange } type="text" />
+          </div>
+            <Button className="btn mb-2">Submit</Button>
+        </Form>
+        <div style={ mapStyles }>
+          <FoodTruckMap 
+            defaultCenter={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }}
+            loadingElement={ <div style={{ height: `100%` }} />} 
+            containerElement={ <div style={{ height: `800px` }} /> }
+            zoom={this.state.zoom }
+            mapElement={ <div style={{ height: `100%` }} /> }
+          >
+            <Marker position={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }} />
+              { this.props.foodTrucks.length > 0 ? 
+                  this.props.foodTrucks.map((current, index) => 
+                    <Marker 
+                      position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } 
+                      options={{icon: 'ImagesC/TruckIcon.png'}}
+                      onClick={ () => { this.props.toggleMapData(index) }}>
+                        { current.isMapDataOpen && 
+                        <InfoWindow style={infoWindowStyles }>
                           <div>
                             <div className="infowindow-title">{ current.name }</div>
                             <div className="infowindow-body">
@@ -112,16 +83,10 @@ class FoodTruckMapComponent extends Component {
               </FoodTruckMap>
             </div>
           </div>
-        : <h2>Getting your coordinates.</h2>  
         
-  }
-} 
+        
+      )
+    } 
+}
 
-//ReactDOM.render(<FoodTruckMap isMarkerShown />, document.getElementById("root"));
-
-export default geolocated({ 
-  positionOptions: {
-    enableHighAccuracy: false,
-  }, 
-  userDecisionTimeout: 10000, 
-})(FoodTruckMapComponent);
+export default FoodTruckMapComponent;
