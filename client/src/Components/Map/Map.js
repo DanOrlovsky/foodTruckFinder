@@ -30,12 +30,7 @@ class FoodTruckMapComponent extends Component {
   }
 
 
-  onChange = event => {
-    let { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  }
+
 
 
   render() {
@@ -46,7 +41,7 @@ class FoodTruckMapComponent extends Component {
             <Label for="distance" className="float-left"><h4>Search Radius (miles) : </h4></Label>
           </div>
           <div className="form-group mx-sm-3 mb-2">
-            <Input value={ this.state.distance } name="distance" onChange={ this.onChange } type="text" />
+            <Input value={ this.props.distance } name="distance" onChange={ this.props.onChange } type="text" />
           </div>
             <Button className="btn mb-2">Submit</Button>
         </Form>
