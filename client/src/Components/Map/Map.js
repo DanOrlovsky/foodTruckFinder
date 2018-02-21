@@ -77,7 +77,7 @@ class FoodTruckMapComponent extends Component {
                       options={{icon: 'ImagesC/TruckIcon.png'}}
                       onClick={ () => { this.props.toggleMapData(index) }}>
                         { current.isMapDataOpen && 
-                        <InfoWindow style={infoWindowStyles }>
+                        <InfoWindow>
                           <div>
                             <div className="infowindow-title">{ current.name }</div>
                             <div className="infowindow-body">
