@@ -30,6 +30,14 @@ const foodTruckSchema = new Schema({
         type: String,
         default: "",
     },
+    aggregateRatings: {
+        type: Schema.Types.Array,
+        default: [],
+    },
+    comments: {
+        type: Schema.Types.Array,
+        default: [],
+    },
     // isOpen
     isOpen: { 
        type: Boolean,

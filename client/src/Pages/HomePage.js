@@ -7,6 +7,14 @@ import API from '../utils/API';
 class HomePage extends  Component {
     state = {
         foodTrucks: [],
+        distance: 5,
+    }
+    
+    onChange = event => {
+        let { name, value } = event.target;
+        this.setState({
+          [name]: value
+        });
     }
 
     componentWillReceiveProps(nextProps) {
@@ -21,9 +29,16 @@ class HomePage extends  Component {
           })
         }
     }
-
+    onDistanceChange = event => {
+        let { name, value } = event.target;
+        this.setState({
+          [name]: value
+        });
+    }
+    
     processForm = event => {
         event.preventDefault();
+        localStorage.setItem("distance", this.state.distance);
         API.getLocalTrucks(this.props.coords.latitude, this.props.coords.longitude, this.state.distance).then(resp => {
           this.setState({ foodTrucks: resp.data });      
         })  
@@ -34,7 +49,12 @@ class HomePage extends  Component {
         foodTrucks[index].isMapDataOpen = !foodTrucks[index].isMapDataOpen;
         this.setState({ foodTrucks: foodTrucks });
     }
-    
+    componentDidMount() {
+        const distance = localStorage.getItem("distance");
+        if(distance) {
+            this.setState({ distance: distance });
+        }
+    }
     render() {
         return(
             <Row>
@@ -50,7 +70,9 @@ class HomePage extends  Component {
                                     foodTrucks={ this.state.foodTrucks }  
                                     processForm={ this.processForm } 
                                     toggleMapData={ this.toggleMapData } 
-                                    coords= { this.props.coords } /> ) : 
+                                    coords= { this.props.coords } 
+                                    distance={ this.state.distance } 
+                                    onChange={ this.onDistanceChange } /> ) : 
                             <h2>Getting your coordinates.</h2>  }
                 </Col>
             </Row>
