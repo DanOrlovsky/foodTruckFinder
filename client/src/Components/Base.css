@@ -26,6 +26,10 @@ body {
     text-decoration: none;
     min-height: 100%;
     font-family: Roboto, Arial, Helvetica, sans-serif;
+    background-image: url("/ImagesC/BKGRND/bkgrndhalft.jpg");
+    background-size: 100%;
+    background-attachment: fixed;
+
 }
 h1, h2, h3, h4 {
   font-family: 'yonkyblack_italic', Arial, Helvetica, sans-serif !important;
@@ -40,55 +44,22 @@ strong {
 }
 
 .body-base {
-    background-size: 100%;
-    flex: 1 0 auto;
-    color: #741012;
-    background-image: url("/ImagesC/BKGRND/bkgrndhalft.jpg");
-  }
+  min-height: 100vh;
+  background-color: rgba(244, 188, 25, .6);
+}
   
-  .top-bar a {
-    text-decoration: none;
-    color: #741012;
-    font-weight: bold;
-    transition: color 0.4s;
-    cursor: pointer;
-  }
-  
-  .top-bar a:hover {
-    text-decoration: none;
-    color: #741012;
-    cursor: pointer;
-  }
   
   .text-center {
     text-align: center;
   }
   
-  .top-bar {
-    padding: 10px 15px;
-    margin-bottom: 50px;
-    background-color: #F4BC19;
-    display: flex; 
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  
-  .top-bar-left {
-    justify-content: flex-start;
-    font-size: 1.5em;
-  }
-  
-  .top-bar-right {
-    justify-content: flex-end;
-  }
-
-  .top-bar-middle {
-    justify-content: center;
-  }
   input[type='text'] {
     font-family: Arial;
   }
-  .top-bar a,
+
+  .page-content {
+    padding: 20px 0;
+  }
   .nav a {
     text-decoration: none;
     }
@@ -133,17 +104,25 @@ strong {
     margin: 0 auto;
     cursor: pointer;
   }
-
-  .logobox {
+  nav { 
+    background-color: #F4BC19;
+  }
+  .navbar-brand {
     width: 65px;
     padding: 0.5rem;
   }
 
-  .logobox_Words {
+  .logobox-words {
     width: 100px;
  }
-
-  #signUpForm {
+ .mr-auto {
+   float: right !important;
+ }
+ .navbar-nav {
+  
+   width: 100px;
+ }
+ #signUpForm {
     margin: 0 auto;
     width: 25%;
   }
@@ -187,21 +166,42 @@ strong {
 
   .food-truck-image {
     max-width: 300px;
+    border: 5px solid #741012;
     height: auto;
   }
-  
-  h1.heading-title {
-    line-height: 120px;
-    margin-left: -20px;
+  .btn-danger {
+    background-color: #741012 !important;
   }
-  
+  .btn {
+    transition: 500ms all ease-in-out;
+  }
+
+  .btn:hover {
+    color: #741012 !important;
+    background-color: rgba(255, 255, 255, .6) !important;
+  }
+  h1.heading-title {
+    line-height: 80px;
+    margin-left: -20px;
+    border-bottom: 2px solid #741012;
+  }
+  form {
+    margin-top: 20px;
+  }
   .success {
     padding: 10px;
     background-color: green;
     color: white !important;
     border-radius: 10px;
   }
-
+  .input-form {
+    background-color: rgba(255, 255, 255, .8);
+    padding: 50px;
+    border: 3px solid #741012;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 0 0 10px black;
+  }
   .infowindow-title {
     font-size: 22px;
     font-weight: 400;

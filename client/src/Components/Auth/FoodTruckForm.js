@@ -17,7 +17,7 @@ const truckStyles = {
 
 const FoodTruckForm = props => (
     
-    <Container>
+    <Container className="input-form">
     {
         props.foodTruck.isOpen ? 
             <Button onClick={ props.toggleFoodtruck } className="btn btn-danger">Close Foodtruck</Button> : 
@@ -71,7 +71,6 @@ const FoodTruckForm = props => (
                 </Form>    
             </Col>
         </Row>
-        <hr />
     </Container>
 );
 

@@ -7,6 +7,7 @@ const validator = require('validator');
 const router = new express.Router();
 const passport = require('passport');
 const User = require('../db/models/user');
+const Foodtruck = require('../db/models/foodTruck');
 const jwt = require('jsonwebtoken');
 const config = require('../config').init();
 
@@ -94,8 +95,14 @@ router.post('/signup', (req, res, next) => {
     };
     // Turn it into a mongo object
     const newUser = new User(userData);
+
+    if(newUser.role === "Foodtruck") {
+        newUser.foodTrucks.push(new Foodtruck.FoodTruck());
+        console.log(newUser);
+    }
     newUser.save((err) => {
         if(err) {
+            console.log(err);
             // 11000 is a duplicate key error.
             if(err.code === 11000) {
                 return res.json({

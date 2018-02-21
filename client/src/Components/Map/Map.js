@@ -15,6 +15,10 @@ const infoWindowStyles = {
   width: "450px",
 }
 
+const mapStyles = {
+  boxShadow: "0 0 20px black",
+}
+
 const FoodTruckMap = withGoogleMap((props) => 
   <GoogleMap defaultZoom={ props.zoom } { ...props }>
     { props.children }
@@ -76,35 +80,37 @@ class FoodTruckMapComponent extends Component {
               </div>
               <Button className="btn mb-2">Submit</Button>
             </Form>
-            <FoodTruckMap 
-              defaultCenter={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }}
-              loadingElement= { <div style={{ height: `100%` }} />} 
-              containerElement= { <div style={{ height: `800px` }} /> }
-              zoom= {this.state.zoom }
-              mapElement= { <div style={{ height: `100%` }} /> }>
-                <Marker position={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }} />
-                { 
-                  this.state.foodTrucks.length > 0 ? 
-                  this.state.foodTrucks.map((current, index) => 
-                    <Marker 
-                        position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } 
-                        options={{icon: 'ImagesC/TruckIcon.png'}}
-                        onClick={ () => { this.toggleMapData(index) }}>
-                      { current.isMapDataOpen && <InfoWindow style={infoWindowStyles }>
-                        <div>
-                          <div className="infowindow-title">{ current.name }</div>
-                          <div className="infowindow-body">
-                            { current.imageUrl && <img src={current.imageUrl} alt={current.name } className="food-truck-display" />}
-                            { current.description && <p><strong>Description: </strong> { current.description }</p> }
-                            { current.cuisine && <p><strong>Cuisine: </strong> { current.cuisine }</p>}
-                            { current.url && <a href={current.url}>Website</a>}
+            <div style={ mapStyles }>
+              <FoodTruckMap 
+                defaultCenter={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }}
+                loadingElement= { <div style={{ height: `100%` }} />} 
+                containerElement= { <div style={{ height: `800px` }} /> }
+                zoom= {this.state.zoom }
+                mapElement= { <div style={{ height: `100%` }} /> }>
+                  <Marker position={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }} />
+                  { 
+                    this.state.foodTrucks.length > 0 ? 
+                    this.state.foodTrucks.map((current, index) => 
+                      <Marker 
+                          position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } 
+                          options={{icon: 'ImagesC/TruckIcon.png'}}
+                          onClick={ () => { this.toggleMapData(index) }}>
+                        { current.isMapDataOpen && <InfoWindow style={infoWindowStyles }>
+                          <div>
+                            <div className="infowindow-title">{ current.name }</div>
+                            <div className="infowindow-body">
+                              { current.imageUrl && <img src={current.imageUrl} alt={current.name } className="food-truck-display" />}
+                              { current.description && <p><strong>Description: </strong> { current.description }</p> }
+                              { current.cuisine && <p><strong>Cuisine: </strong> { current.cuisine }</p>}
+                              { current.url && <a href={current.url}>Website</a>}
+                            </div>
                           </div>
-                        </div>
-                      </InfoWindow> }
-                    </Marker>
-                  ) : ""
-                }
-            </FoodTruckMap>
+                        </InfoWindow> }
+                      </Marker>
+                    ) : ""
+                  }
+              </FoodTruckMap>
+            </div>
           </div>
         : <h2>Getting your coordinates.</h2>  
         

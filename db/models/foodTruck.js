@@ -8,7 +8,7 @@ const Schema = mongoose.Schema;
 const location = require('./location');
 const foodTruckSchema = new Schema({
     // name
-    name: { type:String, required: true },
+    name: { type:String, default: "" },
     loc: {type: [Number], index: '2dsphere' },
     description: {
         type: String,
