@@ -123,7 +123,7 @@ router.post('/signup', (req, res, next) => {
             sub: newUser._id,
         }
 
-        const token = jwt.sign(payload, config.jwtSecret);
+        const token = jwt.sign(payload, process.env.JWT_SECRET || config.jwtSecret);
         return res.status(200).json({
             success: true,
             token,
