@@ -26,7 +26,7 @@ const FoodTruckMap = withGoogleMap((props) =>
 class FoodTruckMapComponent extends Component {
   state = {
     zoom: 13,
-    directions: [],
+    directions: {},
   }
 
   getDirections(lat,lng) {
@@ -85,7 +85,7 @@ class FoodTruckMapComponent extends Component {
                               { current.description && <p><strong>Description: </strong> { current.description }</p> }
                               { current.cuisine && <p><strong>Cuisine: </strong> { current.cuisine }</p>}
                               { current.url && <a href={current.url}>Website</a>}
-                              <button onClick={ () => { this.getDirections(current.loc[1], current.loc[0]) }}>Get Directions</button>
+                              <p><button onClick={ () => { this.getDirections(current.loc[1], current.loc[0]) }}>Get Directions</button></p>
                             </div>
                           </div>
                         </InfoWindow> }
