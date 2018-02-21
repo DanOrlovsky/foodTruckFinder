@@ -12,11 +12,6 @@ import {
   DirectionsRenderer
 } from "react-google-maps";
 
-
-const infoWindowStyles = {
-  width: "450px",
-}
-
 const mapStyles = {
   boxShadow: "0 0 20px black",
 }
