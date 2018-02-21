@@ -38,7 +38,7 @@ class HomePage extends  Component {
     
     processForm = event => {
         event.preventDefault();
-        localStorage.setItem("distance", this.state.distance);
+        localStorage.setItem("distance", this.state.distance.toString());
         API.getLocalTrucks(this.props.coords.latitude, this.props.coords.longitude, this.state.distance).then(resp => {
           this.setState({ foodTrucks: resp.data });      
         })  
