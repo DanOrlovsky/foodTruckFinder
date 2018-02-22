@@ -146,6 +146,21 @@ strong {
     color:white;
     cursor: pointer;
   }
+  /*.directions-card {
+    margin-top: 10px;
+    padding: 50px;
+  }*/
+  h2.directions {
+    text-shadow: none;
+    color: #741012;
+  }
+  ul.directions {
+    list-style: none;
+  }
+  ul.directions > li {
+    padding: 10px 0;
+    border-bottom: 1px solid #aaa;
+  }
 
   .go2SignUp h4 {
     font-size: 14px;
@@ -194,7 +209,7 @@ strong {
     color: white !important;
     border-radius: 10px;
   }
-  .input-form {
+  .directions-card, .input-form {
     background-color: rgba(255, 255, 255, .8);
     padding: 50px;
     border: 3px solid #741012;
