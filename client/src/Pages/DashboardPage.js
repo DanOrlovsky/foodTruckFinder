@@ -101,11 +101,14 @@ class DashboardPage extends Component {
                     <UserInfoForm 
                         user={this.state.user} 
                         onChange={ this.onUserFormChange } 
-                        onSubmit={ this.onUserFormSubmit}
-                        message={this.state.message } />
+                        onSubmit={ this.onUserFormSubmit }
+                        message={ this.state.message } />
                 </div>;
         } else {
-            page = <UserInfoForm user={this.state.user} onChange={ this.onUserFormChange } onSubmit={ this.onUserFormSubmit} />;
+            page = <UserInfoForm user={this.state.user} 
+                onChange={ this.onUserFormChange } 
+                onSubmit={ this.onUserFormSubmit } 
+                message={ this.state.message }  />;
         }
         return (
             <div>
