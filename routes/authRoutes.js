@@ -3,11 +3,10 @@
 // ----------------------------------------------------
 
 const express = require('express');
-const validator = require('validator');
 const router = new express.Router();
+const validator = require('validator');
 const passport = require('passport');
 const User = require('../db/models/user');
-const Foodtruck = require('../db/models/foodTruck');
 const jwt = require('jsonwebtoken');
 const config = require('../config').init();
 
