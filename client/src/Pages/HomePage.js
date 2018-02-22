@@ -4,6 +4,16 @@ import { Row, Card, CardTitle, Container, Col } from 'reactstrap';
 import { geolocated } from 'react-geolocated';
 import API from '../utils/API';
 
+const truckgif = {
+    width:250
+}
+
+const centerstyle = {
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center'
+}
+
 class HomePage extends  Component {
     state = {
         foodTrucks: [],
@@ -73,7 +83,12 @@ class HomePage extends  Component {
                                     coords= { this.props.coords } 
                                     distance={ this.state.distance } 
                                     onChange={ this.onDistanceChange } /> ) : 
-                            <h2>Getting your coordinates.</h2>  }
+                            <div style={centerstyle}>
+                                <h2>Getting your coordinates.</h2> 
+                                <br></br>
+                                <br></br>
+                                <img src="ImagesC/FTFBouncy.gif" alt="TruckGIF" style={truckgif} />
+                            </div> }
                 </Col>
             </Row>
         );
