@@ -8,7 +8,15 @@ import { geolocated } from 'react-geolocated';
 const UPLOAD_PRESET = 'icwuha7h';
 const UPLOAD_URL = 'https://api.cloudinary.com/v1_1/food-truck-finder/upload';
 
+const truckgif = {
+    width:250
+}
 
+const centerstyle = {
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center'
+}
 
 class DashboardPage extends Component {
     state = {
@@ -93,7 +101,11 @@ class DashboardPage extends Component {
                             message={this.state.message}
                             />
 
-                        ) : <h2>Getting your coordinates</h2>
+                        ) : <div style={centerstyle}>
+                                <h2>Getting your coordinates</h2>
+                                <img src="ImagesC/FTFBouncy.gif" alt="TruckGIF" style={truckgif} />
+                                <br></br>
+                            </div>
                     ) : (
                         <h2>You need to enable Geolocation Services to access foodtruck information</h2>
                     )}
