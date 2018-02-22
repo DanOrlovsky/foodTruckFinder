@@ -2,6 +2,7 @@
 
 import React, { Component } from "react";
 import { Label, Form, Row, Col, FormGroup, Button, Input } from 'reactstrap';
+import DirectionsView from './DirectionsView';
 import API from '../../utils/API';
 import {
   withScriptjs,
@@ -26,7 +27,8 @@ const FoodTruckMap = withGoogleMap((props) =>
 class FoodTruckMapComponent extends Component {
   state = {
     zoom: 13,
-    directions: {},
+    directions: null,
+    legsOfJourney: [],
   }
 
   getDirections(lat,lng) {
@@ -37,8 +39,10 @@ class FoodTruckMapComponent extends Component {
       travelMode: google.maps.TravelMode.DRIVING,
     }, (result, status) => {
       if (status === google.maps.DirectionsStatus.OK) {
+        console.log(result);
         this.setState({
           directions: result,
+          legsOfJourney: result.routes[0].legs[0].steps
         });
       } else {
         console.error(`error fetching directions ${result}`);
@@ -69,34 +73,32 @@ class FoodTruckMapComponent extends Component {
             mapElement={ <div style={{ height: `100%` }} /> }
           >
             <Marker position={{ lat: this.props.coords.latitude, lng: this.props.coords.longitude }}
-            options={{icon: 'ImagesC/URHERE.png'}} />
+              options={{icon: 'ImagesC/URHERE.png'}} />
               { this.props.foodTrucks.length > 0 ? 
-                  this.props.foodTrucks.map((current, index) => 
-                    <Marker 
-                      position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } 
-                      options={{icon: 'ImagesC/TruckIcon.png'}}
-                      onClick={ () => { this.props.toggleMapData(index) }}>
-                        { current.isMapDataOpen && 
-                        <InfoWindow>
-                          <div>
-                            <div className="infowindow-title">{ current.name }</div>
-                            <div className="infowindow-body">
-                              { current.imageUrl && <img src={current.imageUrl} alt={current.name } className="food-truck-display" />}
-                              { current.description && <p><strong>Description: </strong> { current.description }</p> }
-                              { current.cuisine && <p><strong>Cuisine: </strong> { current.cuisine }</p>}
-                              { current.url && <a href={current.url}>Website</a>}
-                              <p><button onClick={ () => { this.getDirections(current.loc[1], current.loc[0]) }}>Get Directions</button></p>
-                            </div>
+                this.props.foodTrucks.map((current, index) => 
+                  <Marker 
+                    position={{ lat: current.loc[1], lng: current.loc[0]}} key={index } 
+                    options={{icon: 'ImagesC/TruckIcon.png'}}
+                    onClick={ () => { this.props.toggleMapData(index) }}>
+                    { current.isMapDataOpen && 
+                      <InfoWindow>
+                        <div>
+                          <div className="infowindow-title">{ current.name }</div>
+                          <div className="infowindow-body">
+                            { current.imageUrl && <img src={current.imageUrl} alt={current.name } className="food-truck-display" />}
+                            { current.description && <p><strong>Description: </strong> { current.description }</p> }
+                            { current.cuisine && <p><strong>Cuisine: </strong> { current.cuisine }</p>}
+                            { current.url && <a href={current.url}>Website</a>}
+                            <p><button onClick={ () => { this.getDirections(current.loc[1], current.loc[0]) }}>Get Directions</button></p>
                           </div>
-                        </InfoWindow> }
-                      </Marker>
-                    ) : ""
-                  }
-                { this.state.directions > 0 && <DirectionsRenderer directions={ this.state.directions} />}
+                        </div>
+                      </InfoWindow> }
+                  </Marker> ) : "" }
+                { this.state.directions && <DirectionsRenderer directions={ this.state.directions} />}
               </FoodTruckMap>
             </div>
-          </div>
-        
+            { this.state.legsOfJourney.length > 0 && <DirectionsView directions={this.state.legsOfJourney } /> }
+        </div>
         
       )
     } 
