@@ -1,7 +1,7 @@
 // ----------------------------------------------------
 // --- L O C A T I O N . J S --------------------------
 // ----------------------------------------------------
-
+// FOR FUTURE BUILDOUT
 
 //INCLUDES
 const GeoJSON = require('mongoose-geojson-schema');

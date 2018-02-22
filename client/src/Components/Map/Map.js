@@ -28,10 +28,11 @@ class FoodTruckMapComponent extends Component {
   state = {
     zoom: 13,
     directions: null,
+    foodTruckName: "",
     legsOfJourney: [],
   }
 
-  getDirections(lat,lng) {
+  getDirections(name, lat, lng) {
     const DirectionsService = new google.maps.DirectionsService();
     DirectionsService.route({
       origin: new google.maps.LatLng(this.props.coords.latitude, this.props.coords.longitude),
@@ -42,7 +43,8 @@ class FoodTruckMapComponent extends Component {
         console.log(result);
         this.setState({
           directions: result,
-          legsOfJourney: result.routes[0].legs[0].steps
+          legsOfJourney: result.routes[0].legs[0].steps,
+          foodTruckName: name
         });
       } else {
         console.error(`error fetching directions ${result}`);
@@ -89,7 +91,7 @@ class FoodTruckMapComponent extends Component {
                             { current.description && <p><strong>Description: </strong> { current.description }</p> }
                             { current.cuisine && <p><strong>Cuisine: </strong> { current.cuisine }</p>}
                             { current.url && <a href={current.url}>Website</a>}
-                            <p><button onClick={ () => { this.getDirections(current.loc[1], current.loc[0]) }}>Get Directions</button></p>
+                            <p><button onClick={ () => { this.getDirections(current.name, current.loc[1], current.loc[0]) }}>Get Directions</button></p>
                           </div>
                         </div>
                       </InfoWindow> }
@@ -97,7 +99,8 @@ class FoodTruckMapComponent extends Component {
                 { this.state.directions && <DirectionsRenderer directions={ this.state.directions} />}
               </FoodTruckMap>
             </div>
-            { this.state.legsOfJourney.length > 0 && <DirectionsView directions={this.state.legsOfJourney } /> }
+            { this.state.legsOfJourney.length > 0 && 
+                <DirectionsView directions={this.state.legsOfJourney } destName={this.state.foodTruckName } /> }
         </div>
         
       )

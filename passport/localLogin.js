@@ -19,7 +19,9 @@ module.exports = new PassportLocalStrategy({
     session: false,
     passReqToCallback: true,
 }, (req, email, password, done) => {
+    // Attempts to find a user via email
     return User.findOne({ email: email }, (err, user) => {
+        // HANDLE ERRORS
         if(err) return done(err);
         if(!user) {
             const error = new Error("Incorrect email or password");
@@ -27,11 +29,14 @@ module.exports = new PassportLocalStrategy({
             return done(error);
         }
         
+        // Compares the saved password to the entered one (after hashing it)
         return user.comparePassword(password).then(() => {
+            // Generates an object to create a token
             const payload = {
                 sub: user._id
             };
             
+            // Signs a token for the new user
             const token = jwt.sign(payload, config.jwtSecret);
             const data = {
                 user: user,

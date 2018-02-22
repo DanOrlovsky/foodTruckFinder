@@ -1,3 +1,10 @@
+// ---------------------------------------------------------------------------------------
+// --- APP . J S -------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------
+// Highest level container.  Contains routing information and 
+// forces HTTPS.  Also handles top level isAuthenticated state, to be passed to
+// child components that need this data.
+
 import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -33,8 +40,10 @@ class App extends Component {
               <Route exact path='/' component={ HomePage } />
               <Route exact path='/login' render={ ()=> <LoginPage isAuthenticated={this.state.isAuthenticated } 
                                                                   userAuthChanged={this.userAuthChanged }/>} />
+
               <Route exact path='/signup' render={ ()=> <SignUpPage isAuthenticated={this.state.isAuthenticated } 
                                                                     userAuthChanged={this.userAuthChanged } /> } />
+                                                                    
               <Route exact path="/dashboard" render={ () => <DashboardPage isAuthenticated={ this.state.isAuthenticated }/> } />
             </Base>
           </Switch>
