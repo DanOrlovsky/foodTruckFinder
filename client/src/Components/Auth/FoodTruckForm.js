@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Container, Label, Form, FormGroup,  Input, Button } from 'reactstrap';
 import Dropzone from 'react-dropzone';
-
+import { FacebookShareButton, FacebookIcon, TwitterShareButton } from 'react-share';
 const dropZoneStyle ={
     backgroundColor: "#eee",
     border: "1px solid black",
@@ -20,7 +20,17 @@ const FoodTruckForm = props => (
     <Container className="input-form">
     {
         props.foodTruck.isOpen ? 
-            <Button onClick={ props.toggleFoodtruck } className="btn btn-danger">Close Foodtruck</Button> : 
+            ( 
+                <div>
+                    <Button onClick={ props.toggleFoodtruck } className="btn btn-danger">Close Foodtruck</Button> 
+                    <div className="share-box">
+                        <p>Share with your fans you're open!</p>
+                        <FacebookShareButton url={"https://real-food-truck-finder.herokuapp.com"} quote="We're open!  Find us on Food Truck Finder!">
+                            <FacebookIcon size={ 48 } round />
+                        </FacebookShareButton>
+                    </div>
+                </div>
+            ) : 
             <Button className="btn btn-success" onClick={ props.toggleFoodtruck }>Open Food Truck</Button>
     }
         <Row>
