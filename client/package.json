@@ -16,6 +16,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
+    "react-share": "^2.0.0",
     "react-strap": "0.0.1",
     "react-tap-event-plugin": "^3.0.2",
     "react-transition-group": "^1.2.1",
