@@ -1,43 +1,22 @@
-# Create React Express App
+# About Food Truck Finder
 
-## About This Boilerplate
+Food Truck Finder is the App the foodie community has been clamoring for! 
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+The goal for this application was to bring food trucks, consumers and vendors together in an easy-to-use application.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+Users can log in as either a consumer or Food Truck Owner.
 
-## Starting the app locally
+# Consumer 
+As a consumer, you will be able to see where local food trucks are within your designated mile radius. Using geo location, the app will use the consumers location, then show the open foodtrucks in their area. The user can then choose a foodtruck and get both map directions and written directions from their location to the food truck. 
 
-Start by installing front and backend dependencies. While in this directory, run the following commands:
+# Food Truck Owner
+As a food truck owner, you are able to login and input your location, photos of your food truck, and most importantly, whether or not you are open. This feature is important because we want to make sure consumers are only able to see food trucks open at the time they are looking. 
 
-```
-yarn install
-cd client
-yarn install
-cd ..
-``
+# Technology Used
+React.js
+Reactstrap
+MongoDB
+Passport
+Geospatial Queries 
+Geo Location Services
 
-After both installations complete, run the following command in your terminal:
-
-```
-yarn start
-```
-
-That's it, your app should be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-After confirming that you have an up to date git repository and a Heroku app created, complete the following:
-
-1. Build the React app for production by running the following command:
-
-```
-yarn build
-```
-> Note: A yarn build will be required to register any new Post requests from any front-end JavaScript to to prevent any proxy server errors.
-
-2. Add and commit all changes to git
-
-3. Push to Heroku
-
-If all previous steps were followed correctly, your application should be deployed to Heroku!
