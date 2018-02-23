@@ -65,6 +65,7 @@ strong {
 
   .SocialMediaShareButton {
     display: inline-block;
+    margin-left: 10px;
   }
 
   .nav a {
