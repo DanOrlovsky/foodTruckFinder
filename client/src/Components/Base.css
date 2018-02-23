@@ -62,6 +62,11 @@ strong {
   .page-content {
     padding: 20px 0;
   }
+
+  .SocialMediaShareButton {
+    display: inline-block;
+  }
+
   .nav a {
     text-decoration: none;
     }
