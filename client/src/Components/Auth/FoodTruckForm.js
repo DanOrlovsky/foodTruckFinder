@@ -28,6 +28,9 @@ const FoodTruckForm = props => (
                         <FacebookShareButton url={"https://foodtruckfinder.life"} quote="We're open!  Find us on Food Truck Finder!">
                             <FacebookIcon size={ 48 } round className="pointer-class" />
                         </FacebookShareButton>
+                        <TwitterShareButton url={"https://foodtruckfinder.life"} title="We're Open on Food Truck Finder">
+                            <TwitterIcon size={48} round className="pointer-class" />
+                        </TwitterShareButton>
                     </div>
                 </div>
             ) : 
