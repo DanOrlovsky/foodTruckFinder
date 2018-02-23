@@ -56,7 +56,9 @@ strong {
   input[type='text'] {
     font-family: Arial;
   }
-
+  .pointer-class {
+    cursor: pointer;
+  }
   .page-content {
     padding: 20px 0;
   }
