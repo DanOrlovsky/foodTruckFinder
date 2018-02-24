@@ -25,7 +25,7 @@ const FoodTruckForm = props => (
                     <Button onClick={ props.toggleFoodtruck } className="btn btn-danger">Close Foodtruck</Button> 
                     <div className="share-box">
                         <p>Share with your fans you're open!</p>
-                        <FacebookShareButton url={"https://foodtruckfinder.life"} quote="We're open!  Find us on Food Truck Finder!">
+                        <FacebookShareButton url={"https://www.foodtruckfinder.life"} quote="We're open!  Find us on Food Truck Finder!">
                             <FacebookIcon size={ 48 } round className="pointer-class" />
                         </FacebookShareButton>
                         <TwitterShareButton url={"https://foodtruckfinder.life"} title="We're Open on Food Truck Finder">
