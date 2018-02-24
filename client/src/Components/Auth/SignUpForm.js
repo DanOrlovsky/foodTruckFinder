@@ -21,6 +21,7 @@ const SignUpForm = ({ message, onSubmit, onChange, errors, user }) => (
       <FormGroup>
         <Label for="userZipcode">Zipcode</Label>
         <Input type="text" name="zipCode" onChange={ onChange } id="userZip" placeholder="#####" />
+        { errors.zipCode ? <label className="badge badge-danger">{errors.zipCode }</label> : "" }
       </FormGroup>
       <FormGroup>
         <Label for="userPassword">Password</Label>
