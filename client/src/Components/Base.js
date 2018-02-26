@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import MetaTags from 'react-meta-tags';
 import { Link } from 'react-router-dom';
 import Auth from '../Modules/Auth';
 import './Base.css';
@@ -22,6 +23,7 @@ class Base extends Component {
                 <div className="container text-center">
                 <a href="https://www.facebook.com/FoodTruckFinderLife/" target="_blank" class="fa fa-facebook"></a>
                 <a href="https://twitter.com/FTFLife" target="_blank" class="fa fa-twitter"></a>
+                <a href="https://www.instagram.com/foodtruckfinderlife/" target="_blank" class="fa fa-instagram"></a>
                 
                        © <span className="arial">2018</span> Copyright Food Truck Finder Inc.
                     </div>

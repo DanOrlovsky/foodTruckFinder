@@ -1,4 +1,5 @@
 import React from 'react';
+import MetaTags from 'react-meta-tags';
 import { Row, Col,Container, Label, Form, FormGroup, Button, Input } from 'reactstrap';
 
 const styles = {

@@ -30,6 +30,7 @@
     "passport-local": "^1.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-meta-tags": "^0.3.0",
     "reactstrap": "^4.8.0",
     "uuid": "^3.2.1",
     "validator": "^9.3.0"
