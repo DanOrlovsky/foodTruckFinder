@@ -146,6 +146,8 @@ strong {
     width: 25%;
   }
 
+
+
   .loginButton input {
     margin: 15px 10px 0px 0px;
     color: #741012;
@@ -223,9 +225,14 @@ strong {
 .fa-twitter {
   background: #55ACEE;
   color: white;
-  margin-right: 20px;
   margin-top: 10px;
   border: solid 1px #55ACEE;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+  margin-right: 20px;
 }
 
 
