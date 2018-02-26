@@ -192,34 +192,7 @@ strong {
     font-weight: bold;
     background-color: #F4BC19;
   }
-/* Style all font awesome icons */
-.socialIcons, .fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 30px;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 50%;
-}
 
-/* Add a hover effect if you want */
-.socialIcons, .fa:hover {
-  opacity: 0.7;
-}
-
-/* Set a specific color for each brand */
-
-/* Facebook */
-.socialIcons, .fa-facebook {
-  background: #3B5998;
-  color: white;
-}
-
-/* Twitter */
-.socialIcons, .fa-twitter {
-  background: #55ACEE;
-  color: white;
-}
 
   .food-truck-image {
     max-width: 300px;
