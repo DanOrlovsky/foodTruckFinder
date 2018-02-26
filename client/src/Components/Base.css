@@ -37,7 +37,7 @@ h1, h2, h3, h4 {
 h1 { font-size: 60px; -webkit-text-stroke: 2.75px #741012; color: white !important }
 h2 { font-size: 50px; }
 h3 { font-size: 40px; }
-h4 { font-size: 30px; -webkit-text-stroke: 2px #741012; color: white !important }
+h4 { font-size: 30px; -webkit-text-stroke: 1px #741012; color: white !important }
 
 strong {
   font-weight: 700;
