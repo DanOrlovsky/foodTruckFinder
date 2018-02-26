@@ -20,8 +20,9 @@ class Base extends Component {
                 <div className="footer-copyright">
                     <div className="container text-center">
                     {/* Add font awesome icons */}
-                    <a href="https://www.facebook.com/FoodTruckFinderLife/" class="fa fa-facebook"></a>
-                    <a href="https://twitter.com/FTFLife" class="fa fa-twitter"></a>
+                    <a href="https://www.facebook.com/FoodTruckFinderLife/" target="_Blank" class="fa fa-facebook"></a>
+                    <a href="https://twitter.com/FTFLife" target="_Blank" class="fa fa-twitter"></a>
+                    <br>
                        © <span className="arial">2018</span> Copyright Food Truck Finder Inc.
                     </div>
                 </div>

@@ -193,6 +193,15 @@ strong {
     background-color: #F4BC19;
   }
 
+  .fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
   .food-truck-image {
     max-width: 300px;
     border: 5px solid #741012;
