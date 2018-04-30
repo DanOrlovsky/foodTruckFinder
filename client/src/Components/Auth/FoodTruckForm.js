@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, Container, Label, Form, FormGroup,  Input, Button } from 'reactstrap';
 import Dropzone from 'react-dropzone';
+import MetaTags from 'react-meta-tags';
 import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share';
 const dropZoneStyle ={
     backgroundColor: "#eee",

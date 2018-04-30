@@ -56,6 +56,10 @@ export default class NavBar extends Component {
               <NavItem>
                 <NavLink href="/logout" onClick={ this.logOut }>Logout</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink 
+                  href="/AboutUs">About FTF</NavLink>
+              </NavItem>
             </div>
           ) : (
             <div>
@@ -65,6 +69,10 @@ export default class NavBar extends Component {
               </NavItem>
               <NavItem>
                 <NavLink href="/signup">Sign Up</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink 
+                  href="/AboutUs">About FTF</NavLink>
               </NavItem>
             </div>
           )}

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
+import MetaTags from 'react-meta-tags';
 import '../Base.css';
 
 const signUpStyles = {

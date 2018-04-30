@@ -37,7 +37,7 @@ h1, h2, h3, h4 {
 h1 { font-size: 60px; -webkit-text-stroke: 2.75px #741012; color: white !important }
 h2 { font-size: 50px; }
 h3 { font-size: 40px; }
-h4 { font-size: 30px; -webkit-text-stroke: 2px #741012; color: white !important }
+h4 { font-size: 30px; -webkit-text-stroke: 1px #741012; color: white !important }
 
 strong {
   font-weight: 700;
@@ -146,6 +146,8 @@ strong {
     width: 25%;
   }
 
+
+
   .loginButton input {
     margin: 15px 10px 0px 0px;
     color: #741012;
@@ -192,6 +194,47 @@ strong {
     font-weight: bold;
     background-color: #F4BC19;
   }
+
+  .fa {
+    padding: 10px 0px;
+    margin: 5px;
+    font-size: 20px;
+    width: 40px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  background: #F4BC19;
+  color: #741012;
+  border: solid 1px #741012;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+  border: solid 1px #3B5998;
+}
+
+/* Twitter */
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+  margin-top: 10px;
+  border: solid 1px #55ACEE;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+  margin-right: 20px;
+}
+
 
   .food-truck-image {
     max-width: 300px;
