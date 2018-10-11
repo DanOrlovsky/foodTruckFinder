@@ -2,22 +2,19 @@
 // --- S E R V E R . J S ------------------------------
 // ----------------------------------------------------
 
-
-'use strict';
-
+"use strict";
 
 // INCLUDES
 const express = require("express");
 const path = require("path");
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const setup = require('./config').init();
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const setup = require("./config").init();
 const app = express();
-const passport = require('passport');
-const User = require('./db/models/user');
+const passport = require("passport");
 
 // Setup body parser
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -25,39 +22,35 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Log commands
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 
 // Setup passport
-const loginStrategy = require('./passport/localLogin');
-const authMiddleware = require('./passport/authCheck');
-passport.use('local-login', loginStrategy);
+const loginStrategy = require("./passport/localLogin");
+const authMiddleware = require("./passport/authCheck");
+passport.use("local-login", loginStrategy);
 
 // Protect api routes
-app.use('/api', authMiddleware);
-
+app.use("/api", authMiddleware);
 
 // DB Setup
 const db = process.env.MONGODB_URI || setup.db.uri;
-require('./db/mongoose')(db);
-
+require("./db/mongoose")(db);
 
 // Include routes
-const authRoutes = require('./routes/authRoutes');
-const apiRoutes = require('./routes/apiRoutes');
-const publicRoutes = require('./routes/publicRoutes');
+const authRoutes = require("./routes/authRoutes");
+const apiRoutes = require("./routes/apiRoutes");
+const publicRoutes = require("./routes/publicRoutes");
 
 // Setup routes
-app.use('/auth', authRoutes);
-app.use('/api', apiRoutes);
-app.use('/public', publicRoutes);
-
+app.use("/auth", authRoutes);
+app.use("/api", apiRoutes);
+app.use("/public", publicRoutes);
 
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
-
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, function() {
